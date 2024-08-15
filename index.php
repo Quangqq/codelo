@@ -1,3 +1,12 @@
+<?php require_once './res/config/option.php'; ?>
+<?php 
+$ThanhDieuHeader = new ThanhDieuHeader();
+$ThanhDieuLoveDays = new ThanhDieuLoveDays();
+$ThanhDieuMusicList = new ThanhDieuMusicList();
+$ThanhDieuHeader->CommonMethod();
+$ThanhDieuLoveDays->CommonMethod();
+$ThanhDieuMusicList->CommonMethod();
+?>
 <!DOCTYPE html>
 <html lang="en" class="theme-custom">
 <head>
