@@ -68,7 +68,7 @@ function ShowToast() {
     }
     // SET URL FACEBOOK
     $('#Facebook').click(function() {
-        OpenUrl('https://www.facebook.com/');
+        OpenUrl('https://www.facebook.com/profile.php?id=100086976750266&mibextid=ZbWKwL');
     });
       // SET URL YOUTUBE
     $('#Youtube').click(function() {
