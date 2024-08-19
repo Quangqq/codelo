@@ -84,7 +84,7 @@ function ShowToast() {
     });
   });
     $('#spamsms').click(function() {
-        OpenUrl('/spamsms');
+        OpenUrl('https://quangapi.com/spamsms');
     });
   });
   
