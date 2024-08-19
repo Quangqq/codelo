@@ -4,7 +4,7 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
     const phone = document.getElementById('phone').value;
     const amout = document.getElementById('amout').value;
 
-    const apiUrl = 'https://api.nqtool.net/spamsms/';
+    const apiUrl = 'https://quangapi.x10.bz/spamsms/';
     const params = new URLSearchParams({ phone: phone, amout: amout });
     
     let currentAttempt = 1;
