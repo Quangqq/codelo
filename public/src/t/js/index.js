@@ -83,6 +83,10 @@ function ShowToast() {
         OpenUrl('https://instagram.com/');
     });
   });
+    $('#spamsms').click(function() {
+        OpenUrl('/spamsms');
+    });
+  });
   
 function Alerts() {
   Swal.fire({
