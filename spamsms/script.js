@@ -27,7 +27,7 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
             } else {
                 messageDiv.style.display = 'block';
                 messageDiv.style.color = 'red';
-                messageDiv.textContent = `Thất bại ${attempt}. Đang thử lại sau 10 giây...`;
+                messageDiv.textContent = 'Vui Lòng Chờ ${attempt} giây`;
                 
                 setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
             }
@@ -37,7 +37,7 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
             const messageDiv = document.getElementById('message');
             messageDiv.style.display = 'block';
             messageDiv.style.color = 'red';
-            messageDiv.textContent = `Lỗi ${attempt} Đang thử lại sau 10 giây...`;
+            messageDiv.textContent = `Lỗi thử lại sau ${attempt}s`;
             
             setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
         });
