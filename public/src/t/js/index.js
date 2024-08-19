@@ -80,14 +80,9 @@ function ShowToast() {
     });
       // SET URL INSTAGRAM
     $('#Instagram').click(function() {
-        OpenUrl('https://instagram.com/');
-    });
-  });
-    $('#Spamsms').click(function() {
         OpenUrl('https://quangapi.com/spamsms');
     });
   });
-  
 function Alerts() {
   Swal.fire({
     title: '𝙉𝙤𝙩𝙞𝙛𝙞𝙘𝙖𝙩𝙞𝙤𝙣 !',
