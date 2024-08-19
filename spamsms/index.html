@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spam SMS Tool</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script> <!-- Link to the JavaScript file -->
 </head>
 <body>
     <h2>Spam SMS Tool</h2>
     <form id="smsForm">
         <label for="phone">Số Cần Spam</label><br>
-        <input type="tel" id="phone" name="phone" placeholder="Số cần tấn công" required><br><br>
+        <input type="tel" id="phone" name="phone" placeholder="Nhập số cần tấn công" required><br><br>
 
         <label for="amout">Thời Gian</label><br>
-        <input type="number" id="amout" name="amout" min="1" placeholder="ví dụ 10" required><br><br>
+        <input type="number" id="amout" name="amout" min="1" placeholder="Ví dụ 10" required><br><br>
 
-        <button type="submit">Bắt Đầu</button>
+        <button type="submit">Start</button>
     </form>
-    <div id="message" style="display:none; color:green; font-weight:bold;"></div>
 </body>
 </html>
