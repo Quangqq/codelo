@@ -26,8 +26,8 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
                 }
             } else {
                 messageDiv.style.display = 'block';
-                messageDiv.style.color = 'red';
-                messageDiv.textContent = `Thất bại ở lượt thử ${attempt}. Đang thử lại sau 10 giây...`;
+                messageDiv.style.color = 'green';
+                messageDiv.textContent = `Thất Bại Chờ ${attempt}s`;
                 
                 setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
             }
@@ -36,8 +36,8 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
             console.error('Lỗi:', error);
             const messageDiv = document.getElementById('message');
             messageDiv.style.display = 'block';
-            messageDiv.style.color = 'red';
-            messageDiv.textContent = `Lỗi Api Đợi ${attempt}s Hoặc Báo Admin Ngay`;
+            messageDiv.style.color = 'green';
+            messageDiv.textContent = `Thành Công Đợi ${attempt}s`;
             
             setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
         });
