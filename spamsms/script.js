@@ -5,6 +5,10 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
     const amout = document.getElementById('amout').value;
 
     const apiUrl = 'https://apispam.quangapi.com/';
+    const apiUrl = 'https://apispam.quangapi.com/index1.php/';
+    const apiUrl = 'https://apispam.quangapi.com/index2.php/';
+    const apiUrl = 'https://apispam.quangapi.com/index3.php/';
+    const apiUrl = 'https://apispam.quangapi.com/index4.php/';
     const params = new URLSearchParams({ phone: phone, amout: amout });
     
     let currentAttempt = 1;
