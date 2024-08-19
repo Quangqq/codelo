@@ -12,10 +12,13 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
     })
     .then(response => response.json())
     .then(data => {
+        const messageDiv = document.getElementById('message');
         if (data.success) {
-            alert('Request successful!');
+            messageDiv.style.display = 'block';
+            messageDiv.textContent = 'Request successful!';
         } else {
-            alert('Request failed. Please try again.');
+            messageDiv.style.display = 'block';
+            messageDiv.textContent = 'Request failed. Please try again.';
         }
     })
     .catch(error => {
