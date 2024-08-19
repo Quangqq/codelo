@@ -6,28 +6,42 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
 
     const apiUrl = 'https://api.nqtool.net/spamsms/';
     const params = new URLSearchParams({ phone: phone, amout: amout });
+    
+    let currentAttempt = 1;
 
-    fetch(`${apiUrl}?${params}`, {
-        method: 'GET',
-    })
-    .then(response => response.json())
-    .then(data => {
-        const messageDiv = document.getElementById('message');
-        if (data.success) {  // Assuming the API returns { success: true } on success
-            messageDiv.style.display = 'block';
-            messageDiv.style.color = 'green';
-            messageDiv.textContent = 'Thanh công';
-        } else {
+    function sendRequest(attempt) {
+        fetch(`${apiUrl}?${params}`, {
+            method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => {
+            const messageDiv = document.getElementById('message');
+            if (data.success) {  // Assuming the API returns { success: true } on success
+                messageDiv.style.display = 'block';
+                messageDiv.style.color = 'green';
+                messageDiv.textContent = `Thành công chờ ${attempt}s`;
+                
+                if (attempt < amout) {
+                    setTimeout(() => sendRequest(attempt + 1), 10000); // 10-second delay before next attempt
+                }
+            } else {
+                messageDiv.style.display = 'block';
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = `Thất bại ${attempt}. Đang thử lại sau 10 giây...`;
+                
+                setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi:', error);
+            const messageDiv = document.getElementById('message');
             messageDiv.style.display = 'block';
             messageDiv.style.color = 'red';
-            messageDiv.textContent = 'Thành Công';
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        const messageDiv = document.getElementById('message');
-        messageDiv.style.display = 'block';
-        messageDiv.style.color = 'red';
-        messageDiv.textContent = 'Thành Công';
-    });
+            messageDiv.textContent = `Lỗi ${attempt} Đang thử lại sau 10 giây...`;
+            
+            setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
+        });
+    }
+
+    sendRequest(currentAttempt);
 });
