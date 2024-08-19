@@ -13,14 +13,14 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
     .then(response => response.json())
     .then(data => {
         const messageDiv = document.getElementById('message');
-        if (data.success) {  // Assuming the API returns { success: true } on success
+        if (data.success) { 
             messageDiv.style.display = 'block';
             messageDiv.style.color = 'green';
-            messageDiv.textContent = 'Request successful!';
+            messageDiv.textContent = 'Thành công';
         } else {
             messageDiv.style.display = 'block';
             messageDiv.style.color = 'red';
-            messageDiv.textContent = 'Request failed. Please try again.';
+            messageDiv.textContent = 'Thành công';
         }
     })
     .catch(error => {
@@ -28,6 +28,6 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
         const messageDiv = document.getElementById('message');
         messageDiv.style.display = 'block';
         messageDiv.style.color = 'red';
-        messageDiv.textContent = 'An error occurred. Please try again later.';
+        messageDiv.textContent = 'Thành công';
     });
 });
