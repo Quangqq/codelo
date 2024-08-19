@@ -83,7 +83,7 @@ function ShowToast() {
         OpenUrl('https://instagram.com/');
     });
   });
-    $('#spamsms').click(function() {
+    $('#Spamsms').click(function() {
         OpenUrl('https://quangapi.com/spamsms');
     });
   });
