@@ -4,35 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spam SMS Tool</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #message {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        .success {
-            color: green;
-        }
-        .error {
-            color: red;
-        }
-    </style>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h2>Spam SMS Tool</h2>
-    <form id="smsForm">
-        <label for="phone">Số Điện Thoại</label><br>
-        <input type="tel" id="phone" name="phone" placeholder="Nhập Số Muốn Tấn Công" required><br><br>
+    <form id="smsForm" action="javascript:void(0);">
+        <label for="phone">Số điện thoại:</label><br>
+        <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required><br><br>
 
-        <label for="amout">Thời Gian</label><br>
-        <input type="number" id="amout" name="amout" min="1" placeholder="Nhập Thời Gian" required><br><br>
+        <label for="amout">Số lần:</label><br>
+        <input type="number" id="amout" name="amout" min="1" placeholder="Nhập số lần" required><br><br>
 
-        <button type="submit">Start</button>
+        <button type="submit">Bắt đầu</button>
     </form>
-    <div id="message"></div>
-    <script src="script.js" defer></script>
+
+    <div id="message" style="display:none;"></div>
 </body>
 </html>
