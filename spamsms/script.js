@@ -4,16 +4,22 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
     const phone = document.getElementById('phone').value;
     const amout = document.getElementById('amout').value;
 
-    const apiUrl = 'https://apispam.quangapi.com/';
-    const apiUrl = 'https://apispam.quangapi.com/index1.php/';
-    const apiUrl = 'https://apispam.quangapi.com/index2.php/';
-    const apiUrl = 'https://apispam.quangapi.com/index3.php/';
-    const apiUrl = 'https://apispam.quangapi.com/index4.php/';
+    const apiUrls = [
+        'https://apispam.quangapi.com/',
+        'https://apispam.quangapi.com/index1.php/',
+        'https://apispam.quangapi.com/index2.php/',
+        'https://apispam.quangapi.com/index3.php/',
+        'https://apispam.quangapi.com/index4.php/'
+    ];
+    
     const params = new URLSearchParams({ phone: phone, amout: amout });
     
     let currentAttempt = 1;
 
     function sendRequest(attempt) {
+        // Rotate through the API URLs based on the current attempt number
+        const apiUrl = apiUrls[(attempt - 1) % apiUrls.length];
+
         fetch(`${apiUrl}?${params}`, {
             method: 'GET',
         })
@@ -30,7 +36,7 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
                 }
             } else {
                 messageDiv.style.display = 'block';
-                messageDiv.style.color = 'green';
+                messageDiv.style.color = 'red';
                 messageDiv.textContent = `Thất Bại Chờ ${attempt}s`;
                 
                 setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
@@ -40,7 +46,7 @@ document.getElementById('smsForm').addEventListener('submit', function(event) {
             console.error('Lỗi:', error);
             const messageDiv = document.getElementById('message');
             messageDiv.style.display = 'block';
-            messageDiv.style.color = 'green';
+            messageDiv.style.color = 'red';
             messageDiv.textContent = `Thành Công Đợi ${attempt}s`;
             
             setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
