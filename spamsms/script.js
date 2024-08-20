@@ -1,9 +1,9 @@
-function sendSMS() {
+document.getElementById('sendButton').addEventListener('click', function() {
     const phone = document.getElementById('phone').value;
     const amount = document.getElementById('amount').value;
 
     if (!phone || !amount) {
-        alert('Vui lòng nhập số điện thoại và số lần');
+        alert('Lỗi...');
         return;
     }
 
@@ -12,9 +12,9 @@ function sendSMS() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            document.getElementById('result').innerText = `Thành Công: ${data.success}`;
+            document.getElementById('result').innerText = `Success: ${data.success}`;
         })
         .catch(error => {
-            document.getElementById('result').innerText = `Thất Bại: ${error}`;
+            document.getElementById('result').innerText = `Error: ${error}`;
         });
-}
+});
