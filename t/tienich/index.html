@@ -1,125 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Feature Tool</title>
+    <title>Dịch Vụ Cho Thuê Cronjob</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-        }
-        nav {
-            background-color: #333;
-            padding: 10px;
-        }
-        nav ul {
-            list-style-type: none;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
         }
-        nav ul li a {
-            color: white;
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+        }
+        header a {
+            color: #fff;
             text-decoration: none;
-            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
         }
-        section {
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        .showcase {
+            background: #333;
+            color: #fff;
+            height: 400px;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .showcase h1 {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+        .showcase p {
+            font-size: 20px;
+        }
+        .main {
+            padding: 20px;
+            background: #fff;
+            text-align: center;
+            margin-top: -20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .main h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .main form {
+            max-width: 500px;
+            margin: auto;
+            text-align: left;
+        }
+        .main form label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .main form input[type="text"],
+        .main form input[type="url"],
+        .main form input[type="submit"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .main form input[type="submit"] {
+            background: #0779e4;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        footer {
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            text-align: center;
             margin-top: 20px;
-        }
-        #uploadedImage {
-            display: none;
-            max-width: 300px;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Menu -->
-    <nav>
-        <ul>
-            <li><a href="#uploadImage">Upload Image</a></li>
-            <li><a href="#buffShare">Buff Share</a></li>
-            <li><a href="#buffView">Buff View Zefoy</a></li>
-        </ul>
-    </nav>
 
-    <!-- Upload Image Section -->
-    <section id="uploadImage">
-        <h2>Upload and Display Image</h2>
-        <form id="uploadForm" enctype="multipart/form-data">
-            <input type="file" id="imageUpload" accept="image/*">
-            <button type="button" onclick="uploadImage()">Upload</button>
+<header>
+    <div class="container">
+        <div id="branding">
+            <h1>Dịch Vụ Cho Thuê Cronjob</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="#">Đăng Nhập</a></li>
+                <li><a href="#">Đăng Ký</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="showcase">
+    <div class="container">
+        <h1>Tự Động Hóa Nhiệm Vụ với Cronjob</h1>
+        <p>Dễ dàng lên lịch và quản lý các công việc cron của bạn.</p>
+    </div>
+</section>
+
+<section class="main">
+    <div class="container">
+        <h2>Đăng Ký Dịch Vụ Cronjob</h2>
+        <form action="/submit_cronjob" method="post">
+            <label for="name">Tên của bạn:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="url">URL Cronjob:</label>
+            <input type="url" id="url" name="url" required>
+
+            <label for="frequency">Tần suất chạy (phút):</label>
+            <input type="text" id="frequency" name="frequency" required>
+
+            <input type="submit" value="Đăng Ký">
         </form>
-        <h3>Uploaded Image:</h3>
-        <img id="uploadedImage" src="#" alt="Image will be displayed here">
-    </section>
+    </div>
+</section>
 
-    <!-- Buff Share Section -->
-    <section id="buffShare">
-        <h2>Buff Facebook Share</h2>
-        <form id="buffShareForm">
-            <label for="fbCookie">Enter Facebook Cookie:</label><br>
-            <textarea id="fbCookie" rows="4" cols="50" placeholder="Paste your Facebook cookie here"></textarea><br><br>
-            <label for="postUrl">Post URL to Buff Share:</label><br>
-            <input type="text" id="postUrl" placeholder="Enter the post URL"><br><br>
-            <button type="button" onclick="buffFacebookShare()">Buff Share</button>
-        </form>
-    </section>
+<footer>
+    <p>Dịch Vụ Cho Thuê Cronjob © 2024</p>
+</footer>
 
-    <!-- Buff View Zefoy Section -->
-    <section id="buffView">
-        <h2>Buff Views with Zefoy</h2>
-        <form id="buffViewForm">
-            <label for="videoUrl">Video URL:</label><br>
-            <input type="text" id="videoUrl" placeholder="Enter the video URL"><br><br>
-            <button type="button" onclick="buffZefoyView()">Buff View</button>
-        </form>
-    </section>
-
-    <script>
-        // Image Upload Function
-        function uploadImage() {
-            const fileInput = document.getElementById('imageUpload');
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-
-            reader.onload = function(event) {
-                const imageElement = document.getElementById('uploadedImage');
-                imageElement.src = event.target.result;
-                imageElement.style.display = 'block';
-            };
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Buff Facebook Share Function (Placeholder)
-        function buffFacebookShare() {
-            const fbCookie = document.getElementById('fbCookie').value;
-            const postUrl = document.getElementById('postUrl').value;
-
-            if (fbCookie && postUrl) {
-                alert(`Buffing share for ${postUrl} using provided Facebook cookie...`);
-                // Add the logic to send these details to your server for processing
-            } else {
-                alert('Please provide both Facebook cookie and post URL.');
-            }
-        }
-
-        // Buff Zefoy View Function (Placeholder)
-        function buffZefoyView() {
-            const videoUrl = document.getElementById('videoUrl').value;
-
-            if (videoUrl) {
-                alert(`Buffing views for ${videoUrl} using Zefoy...`);
-                // Add the logic to send the video URL to your server for processing
-            } else {
-                alert('Please provide the video URL.');
-            }
-        }
-    </script>
 </body>
 </html>
