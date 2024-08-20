@@ -3,7 +3,7 @@ function sendSMS() {
     const amount = document.getElementById('amount').value;
 
     if (!phone || !amount) {
-        alert('Please enter both phone number and amount.');
+        alert('Vui lòng nhập số điện thoại và số lần');
         return;
     }
 
@@ -12,9 +12,9 @@ function sendSMS() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            document.getElementById('result').innerText = `Success: ${data.success}`;
+            document.getElementById('result').innerText = `Thành Công: ${data.success}`;
         })
         .catch(error => {
-            document.getElementById('result').innerText = `Error: ${error}`;
+            document.getElementById('result').innerText = `Thất Bại: ${error}`;
         });
 }
