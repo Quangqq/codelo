@@ -3,18 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload ảnh</title>
+    <title>Multi-Feature Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            margin-top: 20px;
+        }
+        #uploadedImage {
+            display: none;
+            max-width: 300px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Upload ảnh</h2>
-    <form id="uploadForm" enctype="multipart/form-data">
-        <input type="file" id="imageUpload" accept="image/*">
-        <button type="button" onclick="uploadImage()">Upload</button>
-    </form>
-    <h3>Uploaded Image:</h3>
-    <img id="uploadedImage" src="#" alt="Image will be displayed here" style="display:none; max-width: 300px;">
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#uploadImage">Upload Image</a></li>
+            <li><a href="#buffShare">Buff Share</a></li>
+            <li><a href="#buffView">Buff View Zefoy</a></li>
+        </ul>
+    </nav>
+
+    <!-- Upload Image Section -->
+    <section id="uploadImage">
+        <h2>Upload and Display Image</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="imageUpload" accept="image/*">
+            <button type="button" onclick="uploadImage()">Upload</button>
+        </form>
+        <h3>Uploaded Image:</h3>
+        <img id="uploadedImage" src="#" alt="Image will be displayed here">
+    </section>
+
+    <!-- Buff Share Section -->
+    <section id="buffShare">
+        <h2>Buff Facebook Share</h2>
+        <form id="buffShareForm">
+            <label for="fbCookie">Enter Facebook Cookie:</label><br>
+            <textarea id="fbCookie" rows="4" cols="50" placeholder="Paste your Facebook cookie here"></textarea><br><br>
+            <label for="postUrl">Post URL to Buff Share:</label><br>
+            <input type="text" id="postUrl" placeholder="Enter the post URL"><br><br>
+            <button type="button" onclick="buffFacebookShare()">Buff Share</button>
+        </form>
+    </section>
+
+    <!-- Buff View Zefoy Section -->
+    <section id="buffView">
+        <h2>Buff Views with Zefoy</h2>
+        <form id="buffViewForm">
+            <label for="videoUrl">Video URL:</label><br>
+            <input type="text" id="videoUrl" placeholder="Enter the video URL"><br><br>
+            <button type="button" onclick="buffZefoyView()">Buff View</button>
+        </form>
+    </section>
 
     <script>
+        // Image Upload Function
         function uploadImage() {
             const fileInput = document.getElementById('imageUpload');
             const file = fileInput.files[0];
@@ -28,6 +93,31 @@
 
             if (file) {
                 reader.readAsDataURL(file);
+            }
+        }
+
+        // Buff Facebook Share Function (Placeholder)
+        function buffFacebookShare() {
+            const fbCookie = document.getElementById('fbCookie').value;
+            const postUrl = document.getElementById('postUrl').value;
+
+            if (fbCookie && postUrl) {
+                alert(`Buffing share for ${postUrl} using provided Facebook cookie...`);
+                // Add the logic to send these details to your server for processing
+            } else {
+                alert('Please provide both Facebook cookie and post URL.');
+            }
+        }
+
+        // Buff Zefoy View Function (Placeholder)
+        function buffZefoyView() {
+            const videoUrl = document.getElementById('videoUrl').value;
+
+            if (videoUrl) {
+                alert(`Buffing views for ${videoUrl} using Zefoy...`);
+                // Add the logic to send the video URL to your server for processing
+            } else {
+                alert('Please provide the video URL.');
             }
         }
     </script>
