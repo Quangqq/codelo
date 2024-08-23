@@ -78,7 +78,7 @@ function ShowToast() {
     });
       // SET URL INSTAGRAM
     $('#Instagram').click(function() {
-        OpenUrl('https://quangapi.com/spamsms');
+        OpenUrl('/t/tienich/');
     });
   });
 function Alerts() {
