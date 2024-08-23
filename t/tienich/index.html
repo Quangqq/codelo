@@ -1,139 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnlyTris &mdash; Trang Chủ</title>
-    <link rel="shortcut icon" href="https://image.myanimelist.net/ui/OK6W_koKDTOqqqLDbIoPAhB_E_7gwhEyRB2h-q3_KLo" type="image/gif">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
-    <link href="assets/css/styles.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <title>Menu Tiện Ích</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body id="kt_body" class="header-tablet-and-mobile-fixed aside-enabled">
-
-<div class="d-flex flex-column flex-root">
-    <div class="page d-flex flex-row flex-column-fluid">
-
-        <!-- Begin: Sidebar -->
-        <div id="kt_aside" class="aside py-9" data-kt-drawer="true" data-kt-drawer-name="aside">
-            <div class="aside-menu flex-column-fluid ps-5 pe-3 mb-7" id="kt_aside_menu">
-                <div class="w-100 hover-scroll-overlay-y pe-2" id="kt_aside_menu_wrapper">
-                    <div class="menu menu-column menu-rounded menu-sub-indention menu-active-bg fw-semibold my-auto" id="#kt_aside_menu" data-kt-menu="true">
-                        <!-- Main Menu -->
-                        <div class="menu-item pt-5">
-                            <div class="menu-content">
-                                <span class="menu-heading fw-bold text-uppercase fs-7">Main</span>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="index.php">
-                                <span class="menu-icon">
-                                    <i class="bi bi-house fs-3"></i>
-                                </span>
-                                <span class="menu-title">Trang Chủ</span>
-                            </a>
-                        </div>
-
-                        <!-- Panel Menu -->
-                        <div class="menu-item pt-5">
-                            <div class="menu-content">
-                                <span class="menu-heading fw-bold text-uppercase fs-7">Panel</span>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="sms.php">
-                                <span class="menu-icon">
-                                    <i class="bi bi-lightning-charge fs-3"></i>
-                                </span>
-                                <span class="menu-title">SPAM SMS</span>
-                            </a>
-                        </div>
-
-                        <!-- Additional Utility Menu -->
-                        <div class="menu-item pt-5">
-                            <div class="menu-content">
-                                <span class="menu-heading fw-bold text-uppercase fs-7">Utilities</span>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="tool1.php">
-                                <span class="menu-icon">
-                                    <i class="fas fa-toolbox"></i>
-                                </span>
-                                <span class="menu-title">Tool 1</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="tool2.php">
-                                <span class="menu-icon">
-                                    <i class="fas fa-wrench"></i>
-                                </span>
-                                <span class="menu-title">Tool 2</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="mod1.php">
-                                <span class="menu-icon">
-                                    <i class="fas fa-magic"></i>
-                                </span>
-                                <span class="menu-title">Mod 1</span>
-                            </a>
-                        </div>
-
-                        <!-- Contact Menu -->
-                        <div class="menu-item pt-5">
-                            <div class="menu-content">
-                                <span class="menu-heading fw-bold text-uppercase fs-7">Contact</span>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="https://t.me/OnlyTris_Encoder">
-                                <span class="menu-icon">
-                                    <i class="bi bi-send fs-3"></i>
-                                </span>
-                                <span class="menu-title">Telegram</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End: Sidebar -->
-
-        <!-- Begin: Content -->
-        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-            <div id="kt_header" class="header">
-                <div class="container-fluid">
-                    <div class="header-brand me-5">
-                        <a href="index.php">
-                            <img src="https://thumbs.gfycat.com/HiddenMatureGrayreefshark-max-1mb.gif" class="h-20px h-lg-50px" alt="OnlyTris Logo"/>
-                            <h2 style="margin-left: 17px; margin-top: 5px;">OnlyTris</h2>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                <div class="post d-flex flex-column-fluid" id="kt_post">
-                    <div id="kt_content_container" class="container-xxl">
-                        <!-- Your main content here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End: Content -->
-
+<body>
+    <div class="menu-container">
+        <h1>Menu Tiện Ích</h1>
+        <ul class="menu">
+            <li><a href="#tool1">Tool Spam SmS</a></li>
+            <li><a href="#tool2">Up Ảnh</a></li>
+            <li><a href="#tool3">Game</a></li>
+            <li><a href="#tool4">Tool</a></li>
+        </ul>
     </div>
-</div>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4RF4MF664"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-Y4RF4MF664');
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
