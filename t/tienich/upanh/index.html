@@ -22,17 +22,46 @@
     </style>
 </head>
 <body>
-    <h1>Up Ảnh Lấy Link</h1>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" required>
-        <br>
-        <input type="submit" value="Upload Image">
-    </form>
+    <h1>Up Ảnh</h1>
+    <input type="file" id="imageInput">
+    <br>
+    <button onclick="uploadImage()">Up Ảnh</button>
 
-    <?php
-    if (isset($_GET['link'])) {
-        echo '<div class="link">Image Link: <a href="' . $_GET['link'] . '" target="_blank">' . $_GET['link'] . '</a></div>';
-    }
-    ?>
+    <div id="imageLink" class="link"></div>
+
+    <script>
+        async function uploadImage() {
+            const input = document.getElementById('imageInput');
+            const file = input.files[0];
+
+            if (!file) {
+                alert('Please select an image file.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('https://api.imgur.com/3/image', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Client-ID YOUR_IMGUR_CLIENT_ID'
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    const imageUrl = data.data.link;
+                    document.getElementById('imageLink').innerHTML = `Image Link: <a href="${imageUrl}" target="_blank">${imageUrl}</a>`;
+                } else {
+                    alert('Failed to upload image.');
+                }
+            } catch (error) {
+                alert('Thất Bại Rồi Ní Ơi');
+            }
+        }
+    </script>
 </body>
 </html>
