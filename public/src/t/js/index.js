@@ -33,7 +33,7 @@ let typed=new Typed(".GioiThieu", {
 })
 // MUSIC PLAY
 const MusicList=[
-    "//https://quangapi.com/t/miu.js",
+    "/t/miu.js",
 ];
 let t=parseInt(localStorage.getItem('td')) || Math.floor(Math.random() * MusicList.length);
 const audio=new Audio(MusicList[t]);
