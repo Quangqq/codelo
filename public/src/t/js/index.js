@@ -33,7 +33,7 @@ let typed=new Typed(".GioiThieu", {
 })
 // MUSIC PLAY
 const MusicList=[
-    "/t/miu.js",
+    "//https://files.catbox.moe/hkqk6x.mp3",
 ];
 let t=parseInt(localStorage.getItem('td')) || Math.floor(Math.random() * MusicList.length);
 const audio=new Audio(MusicList[t]);
