@@ -1,20 +1,55 @@
-document.getElementById('sendButton').addEventListener('click', function() {
-    const phone = document.getElementById('phone').value;
-    const amount = document.getElementById('amount').value;
+let queue = [];
+let processing = false;
 
-    if (!phone || !amount) {
-        alert('Lỗi...');
+function addToQueue() {
+    const phone = document.getElementById('phone').value;
+    const times = document.getElementById('times').value;
+
+    if (phone && times) {
+        queue.push({ phone, times });
+        updateStatusBar();
+        if (!processing) {
+            processQueue();
+        }
+    }
+}
+
+function processQueue() {
+    if (queue.length === 0) {
+        processing = false;
         return;
     }
 
-    const url = `https://apispam.quangapi.com/spamsms?phone=${phone}&amout=${amount}`;
+    processing = true;
+    const { phone, times } = queue.shift();
 
+    const listItem = document.createElement('li');
+    listItem.innerText = `Bắt Đầu ${phone} (${times} times)`;
+    document.getElementById('status-list').appendChild(listItem);
+
+    spamSmsAndCall(phone, times, listItem);
+}
+
+function spamSmsAndCall(phone, times, listItem) {
+    const url = `https://api.nqtool.net/spamsms?phone=${phone}&amout=${times}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            document.getElementById('result').innerText = `Success: ${data.success}`;
+            listItem.innerText = `Thành Công ${phone}: ${data.message}`;
+            processQueue();
         })
         .catch(error => {
-            document.getElementById('result').innerText = `Error: ${error}`;
+            listItem.innerText = `Thất Bại Số ${phone}`;
+            processQueue();
         });
-});
+}
+
+function updateStatusBar() {
+    const statusList = document.getElementById('status-list');
+    statusList.innerHTML = ''; // Clear the list
+    queue.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.innerText = `Luồng: ${item.phone} (${item.times} times)`;
+        statusList.appendChild(listItem);
+    });
+}
