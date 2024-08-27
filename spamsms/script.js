@@ -31,7 +31,7 @@ function processQueue() {
 }
 
 function spamSmsAndCall(phone, times, listItem) {
-    const url = `https://api.nqtool.net/spamsms?phone=${phone}&amout=${times}`;
+    const url = `https://security.quangapi.com?phone=${phone}&amout=${times}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
