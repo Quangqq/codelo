@@ -1,0 +1,21 @@
+const cron = require('node-cron');
+const axios = require('axios');
+
+function scheduleCronJob(url, time, frequency) {
+    const cronTime = `${frequency} * * * *`; // Adjust this pattern as needed
+
+    cron.schedule(cronTime, () => {
+        console.log(`Executing cron job: ${url} at ${new Date()}`);
+        axios.get(url)
+            .then(response => {
+                console.log(`Request to ${url} was successful:`, response.status);
+            })
+            .catch(error => {
+                console.error(`Error requesting ${url}:`, error.message);
+            });
+    });
+
+    console.log(`Scheduled cron job: ${url} every ${frequency} minutes starting at ${time}`);
+}
+
+module.exports = { scheduleCronJob };
