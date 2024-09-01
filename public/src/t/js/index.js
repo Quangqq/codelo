@@ -76,9 +76,13 @@ function ShowToast() {
     $('#Discord').click(function() {
         OpenUrl('https://dsc.bio/');
     });
-      // SET URL INSTAGRAM
+      // tien ich
     $('#Instagram').click(function() {
         OpenUrl('/t/tienich/');
+    });
+      
+    $('#Tienich1').click(function() {
+        OpenUrl('https://tienich.quangapi.com/');
     });
   });
 function Alerts() {
