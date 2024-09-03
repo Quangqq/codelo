@@ -4,9 +4,6 @@ let processing = false;
 // List of URLs
 const urls = [
     'https://quang.nqtool.net/?',
-    'https://quang.nqtool.net/index1.php?',
-    'https://quang.nqtool.net/index2.php?',
-    'https://quang.nqtool.net/index3.php?',
     'https://quang.nqtool.net/index4.php?'
     // Add more URLs as needed
 ];
