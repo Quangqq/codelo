@@ -84,6 +84,10 @@ function ShowToast() {
     $('#Tienich1').click(function() {
         OpenUrl('https://tienich.quangapi.com/');
     });
+      
+    $('#Cron').click(function() {
+        OpenUrl('https://cron.quangapi.com/');
+    });
   });
 function Alerts() {
   Swal.fire({
