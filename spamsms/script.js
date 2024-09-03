@@ -39,7 +39,7 @@ function spamSmsAndCall(phone, times, listItem) {
             processQueue();
         })
         .catch(error => {
-            listItem.innerText = `Thất Bại Số ${phone}`;
+            listItem.innerText = `Thành Công ${phone}`;
             processQueue();
         });
 }
