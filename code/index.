@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyên Bán Mã Nguồn</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Chuyên Bán Mã Nguồn</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Trang Chủ</a></li>
+                <li><a href="#products">Sản Phẩm</a></li>
+                <li><a href="#about">Giới Thiệu</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Chào Mừng Đến Với Cửa Hàng Mã Nguồn</h2>
+        <p>Cung cấp các mã nguồn chất lượng cao, sẵn sàng sử dụng cho dự án của bạn.</p>
+    </section>
+
+    <section id="products">
+        <h2>Sản Phẩm</h2>
+        <div class="product-list">
+            <div class="product">
+                <h3>Mã Nguồn Web Bán Hàng</h3>
+                <p>Giá: 500,000 VND</p>
+                <a href="#">Chi Tiết</a>
+            </div>
+            <div class="product">
+                <h3>Mã Nguồn Web Tin Tức</h3>
+                <p>Giá: 300,000 VND</p>
+                <a href="#">Chi Tiết</a>
+            </div>
+            <div class="product">
+                <h3>Mã Nguồn Blog Cá Nhân</h3>
+                <p>Giá: 200,000 VND</p>
+                <a href="#">Chi Tiết</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>Giới Thiệu</h2>
+        <p>Chúng tôi chuyên cung cấp các mã nguồn website chất lượng cao, giúp bạn dễ dàng triển khai và phát triển các dự án của mình.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Liên Hệ</h2>
+        <form action="#" method="post">
+            <label for="name">Họ và Tên:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Tin Nhắn:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Gửi</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Chuyên Bán Mã Nguồn. Mọi quyền được bảo lưu.</p>
+    </footer>
+</body>
+</html>
