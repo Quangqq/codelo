@@ -1,3 +1,4 @@
+
 body {
     background: linear-gradient(to right, #00c6ff, #0072ff);
     font-family: 'Arial', sans-serif;
@@ -7,20 +8,6 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    animation: gradientChange 10s infinite;
-    background-size: 300% 300%;
-}
-
-@keyframes gradientChange {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .container {
