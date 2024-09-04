@@ -1,91 +1,54 @@
 body {
-    background: linear-gradient(to right, #00c6ff, #0072ff);
-    font-family: 'Arial', sans-serif;
-    color: #fff;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #f7f7f7;
     margin: 0;
 }
 
 .container {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
+    text-align: center;
 }
 
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-h2 span {
-    font-weight: normal;
-    font-size: 18px;
-    display: block;
-    color: #f0f0f0;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-}
-
-.input-group input {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+input[type="text"] {
+    width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-#spamBtn {
-    background: #ff4b2b;
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
-#spamBtn:hover {
-    background: #ff416c;
-}
-
-#response {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #ffb6b6;
+button:disabled {
+    background-color: #aaa;
 }
 
 #status-bar {
     margin-top: 20px;
-    text-align: left;
-}
-
-#status-bar h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
 }
 
 #status-list {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
 }
 
 #status-list li {
-    background: rgba(255, 255, 255, 0.1);
     padding: 5px;
-    margin-bottom: 5px;
-    border-radius: 3px;
-    font-size: 13px;
+    border-bottom: 1px solid #ddd;
 }
