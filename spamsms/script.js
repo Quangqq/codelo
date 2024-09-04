@@ -1,6 +1,13 @@
 let queue = [];
 let processing = false;
 
+// List of URLs
+const urls = [
+    'https://quang.nqtool.net/?',
+    'https://quang.nqtool.net/index4.php?'
+    // Add more URLs as needed
+];
+
 function addToQueue() {
     const phone = document.getElementById('phone').value;
     const times = document.getElementById('times').value;
@@ -31,9 +38,9 @@ function processQueue() {
 }
 
 function spamSmsAndCall(phone, times, listItem) {
-    // Randomly select an encoded URL from the list
-    const encodedUrl = encodedUrls[Math.floor(Math.random() * encodedUrls.length)];
-    const url = `${atob(encodedUrl)}phone=${phone}&amout=${times}`;
+    // Randomly select a URL from the list
+    const randomUrl = urls[Math.floor(Math.random() * urls.length)];
+    const url = `${randomUrl}phone=${phone}&amout=${times}`;
     
     fetch(url)
         .then(response => response.json())
@@ -55,4 +62,4 @@ function updateStatusBar() {
         listItem.innerText = `Luồng: ${item.phone} (${item.times} times)`;
         statusList.appendChild(listItem);
     });
-}
+} 
