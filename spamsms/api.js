@@ -1,51 +1,91 @@
-document.getElementById('smsForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+body {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-    const phone = document.getElementById('phone').value;
-    const amout = document.getElementById('amout').value;
+.container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px;
+}
 
-    const apiUrl = 'https://apispam.quangapi.com/';
-    const apiUrl1 = 'https://apispam.quangapi.com/index1.php/';
-    const apiUrl2 = 'https://apispam.quangapi.com/index2.php/';
-    const apiUrl3 = 'https://apispam.quangapi.com/index3.php/';
-    const apiUrl5 = 'https://apispam.quangapi.com/index4.php/';
-    const params = new URLSearchParams({ phone: phone, amout: amout });
-    
-    let currentAttempt = 1;
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
 
-    function sendRequest(attempt) {
-        fetch(`${apiUrl}?${params}`, {
-            method: 'GET',
-        })
-        .then(response => response.json())
-        .then(data => {
-            const messageDiv = document.getElementById('message');
-            if (data.success) {  // Assuming the API returns { success: true } on success
-                messageDiv.style.display = 'block';
-                messageDiv.style.color = 'green';
-                messageDiv.textContent = `Thành công chờ ${attempt}s`;
-                
-                if (attempt < amout) {
-                    setTimeout(() => sendRequest(attempt + 1), 10000); // 10-second delay before next attempt
-                }
-            } else {
-                messageDiv.style.display = 'block';
-                messageDiv.style.color = 'green';
-                messageDiv.textContent = `Thất Bại Chờ ${attempt}s`;
-                
-                setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
-            }
-        })
-        .catch(error => {
-            console.error('Lỗi:', error);
-            const messageDiv = document.getElementById('message');
-            messageDiv.style.display = 'block';
-            messageDiv.style.color = 'green';
-            messageDiv.textContent = `Thành Công Đợi ${attempt}s`;
-            
-            setTimeout(() => sendRequest(attempt), 10000); // Retry the same attempt after 10 seconds
-        });
-    }
+h2 span {
+    font-weight: normal;
+    font-size: 18px;
+    display: block;
+    color: #f0f0f0;
+}
 
-    sendRequest(currentAttempt);
-});
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+}
+
+#spamBtn {
+    background: #ff4b2b;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#spamBtn:hover {
+    background: #ff416c;
+}
+
+#response {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ffb6b6;
+}
+
+#status-bar {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#status-bar h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#status-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#status-list li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    font-size: 13px;
+}
