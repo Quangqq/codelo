@@ -54,7 +54,7 @@ function spamSmsAndCall(phone, times, listItem) {
         fetch(url2).then(response => response.json()),
         fetch(url3).then(response => response.json()),
         fetch(url4).then(response => response.json())
-        fetch(url4).then(response => response.json())
+        fetch(url5).then(response => response.json())
     ])
     .then(([response1, response2]) => {
         // check
