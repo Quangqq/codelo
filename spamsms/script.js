@@ -8,8 +8,7 @@ const urls = [
     'https://quang.nqtool.net/index2.php?',
     'https://quang.nqtool.net/index3.php?',
     'https://quang.nqtool.net/index4.php?',
-    'https://quang.nqtool.net/index5.php?',
-    // bố quang yêu cầu ghi nguồn
+    'https://quang.nqtool.net/index5.php?'
 ];
 
 function addToQueue() {
@@ -42,28 +41,23 @@ function processQueue() {
 }
 
 function spamSmsAndCall(phone, times, listItem) {
-    // Create URLs for both API requests
-    const url1 = `${urls[0]}phone=${phone}&amout=${times}`;
-    const url2 = `${urls[1]}phone=${phone}&amout=${times}`;
-    const url3 = `${urls[1]}phone=${phone}&amout=${times}`;
-    const url4 = `${urls[1]}phone=${phone}&amout=${times}`;
-    const url5 = `${urls[1]}phone=${phone}&amout=${times}`;
-    // Ghi nguồn cho bố
-    Promise.all([
-        fetch(url1).then(response => response.json()),
-        fetch(url2).then(response => response.json()),
-        fetch(url3).then(response => response.json()),
-        fetch(url4).then(response => response.json())
-        fetch(url5).then(response => response.json())
-    ])
-    .then(([response1, response2]) => {
-        // check
-        listItem.innerText = `Thành Công ${phone}: URL1 - ${response1.message}, URL2 - ${response2.message}`;
+    // Create URLs for API requests
+    const urlsToFetch = [
+        `${urls[0]}phone=${phone}&amout=${times}`,
+        `${urls[1]}phone=${phone}&amout=${times}`,
+        `${urls[2]}phone=${phone}&amout=${times}`,
+        `${urls[3]}phone=${phone}&amout=${times}`,
+        `${urls[4]}phone=${phone}&amout=${times}`
+    ];
+
+    Promise.all(urlsToFetch.map(url => fetch(url).then(response => response.json())))
+    .then(responses => {
+        const messages = responses.map((response, index) => `URL${index + 1} - ${response.message}`).join(', ');
+        listItem.innerText = `Thành Công ${phone}: ${messages}`;
         processQueue();
     })
     .catch(error => {
-        // 
-        listItem.innerText = `Thất Bại ${phone}`;
+        listItem.innerText = `Thành Công ${phone}`;
         processQueue();
     });
 }
@@ -77,4 +71,3 @@ function updateStatusBar() {
         statusList.appendChild(listItem);
     });
 }
-//Mã hoá full code
