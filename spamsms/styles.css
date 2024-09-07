@@ -1,71 +1,62 @@
-
 body {
-    background: linear-gradient(to right, #00c6ff, #0072ff);
-    font-family: 'Arial', sans-serif;
-    color: #fff;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
 }
 
 .container {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
     text-align: center;
-    width: 300px;
 }
 
 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    color: #333;
 }
 
 h2 span {
-    font-weight: normal;
-    font-size: 18px;
-    display: block;
-    color: #f0f0f0;
+    font-size: 0.8em;
+    color: #777;
 }
 
 .input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
-.input-group input {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+input[type="text"] {
+    width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-#spamBtn {
-    background: #ff4b2b;
+button {
+    background-color: #28a745;
+    color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s;
+    font-size: 16px;
 }
 
-#spamBtn:hover {
-    background: #ff416c;
+button:hover {
+    background-color: #218838;
 }
 
 #response {
     margin-top: 15px;
-    font-size: 14px;
-    color: #ffb6b6;
+    color: #333;
 }
 
 #status-bar {
@@ -74,19 +65,30 @@ h2 span {
 }
 
 #status-bar h3 {
-    font-size: 16px;
     margin-bottom: 10px;
+    color: #555;
 }
 
 #status-list {
-    list-style: none;
+    list-style-type: none;
     padding-left: 0;
 }
 
 #status-list li {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 5px;
-    margin-bottom: 5px;
-    border-radius: 3px;
-    font-size: 13px;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.note {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    text-align: left;
+    color: #856404;
+}
+
+.note h4 {
+    margin: 0 0 10px;
 }
