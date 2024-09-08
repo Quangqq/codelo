@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Web Tools</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Web Tools - Hệ thống tools online">
+<meta property="og:image" content="https://tool.shopdsgm.vn/view/assets/tool-icon.png">
+<meta property="og:type" content="Web Tools">
+<meta property="og:title" content="Web Tools">
+<meta property="og:description" content="Web Tools - Hệ thống tools online">
+<link rel="shortcut icon" href="view/assets/tool-icon.png" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="view/assets/css/style.css?v=1725801903" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="view/assets/js/anti.js?v=1725801903"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+<p class="m-1">IP của bạn: 2402:800:6f2c:eb29:f41d:a6e9:ee5c:c904</p>
+<div class="content">
+<div class="container">
+<form method="post" id="myForm">
+<h2>Tool Buff Like Free Fire</h2>
+<label for="uid">UID Free Fire:</label>
+<input type="number" id="uid" name="uid" placeholder="Nhập UID Free Fire" required>
+<div class="g-recaptcha" data-sitekey="6LcpUDoqAAAAAP38_noqAOatvYb_EQme2f4Kf4co" data-size="invisible" data-callback="onSubmit" hidden></div>
+<button type="submit">Chạy</button>
+</form>
+</div>
+<div id="myModal" class="modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Lưu ý:</h2>
+<span class="close">&times;</span>
+</div>
+<div class="modal-body">
+<div class="scroll-y">
+<p>1 ngày có 150 slot buff like, những ai buff sau khi hết slot sẽ không thể buff thêm.</p>
+<p>Tất cả slot sẽ được làm mới vào lúc 3h sáng hôm sau.</p>
+<br>
+<p>Mua key buff like theo tháng dùng được nhiều slot vui lòng liên hệ <a href="/" target="_blank">Admin</a> để tặng</p>
+</div>
+</div>
+<div class="modal-footer">
+<button id="closeModalBtn">Đóng</button>
+</div>
+</div>
+</div>
+<script src="https://tool.shopdsgm.vn/view/assets/js/buff_like_free_fire.js?v=1725801904"></script> 
+</div>
+<footer class="footer">
+<p style="text-align: center">
+<h6>
+© 2024 Web Tools By DS Gaming. All rights reserved.
+<div style="float: right">
+<a href="/">Home</a>
+</div>
+</h6>
+</p>
+</footer>
+<script src="https://tool.shopdsgm.vn/view/assets/js/script.js?v=1725801904"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</body>
+</html>
