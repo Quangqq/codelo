@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Image from API</title>
+    <title>Get URL from API</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
         }
         .container {
             text-align: center;
@@ -21,23 +17,21 @@
 <body>
 
 <div class="container">
-    <h1>Get Image from API</h1>
-    <button onclick="getImage()">Get Image</button>
-    <div id="image-container"></div>
+    <h1>Get URL from API</h1>
+    <button onclick="getUrl()">Get URL</button>
+    <div id="url-container"></div>
 </div>
 
 <script>
-    function getImage() {
+    function getUrl() {
         const apiUrl = 'https://api.sumiproject.net/video/girlsexy';
 
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                const imageUrl = data.url; // Trích xuất URL ảnh từ phản hồi API
-                const imgElement = document.createElement('img');
-                imgElement.src = imageUrl;
-                document.getElementById('image-container').innerHTML = '';
-                document.getElementById('image-container').appendChild(imgElement);
+                const url = data.url; // Trích xuất URL từ phản hồi API
+                const urlContainer = document.getElementById('url-container');
+                urlContainer.innerHTML = `URL: <a href="${url}" target="_blank">${url}</a>`;
             })
             .catch(error => console.error('Error:', error));
     }
