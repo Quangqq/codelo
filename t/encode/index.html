@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Encryption/Decryption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Code Encryption/Decryption Tool</h1>
+    
+    <label for="inputText">Enter Code to Encrypt:</label>
+    <textarea id="inputText" placeholder="Enter your code here..."></textarea>
+    
+    <button onclick="encrypt()">Encrypt</button>
+    <button onclick="decrypt()">Decrypt</button>
+    
+    <label for="outputText">Output:</label>
+    <textarea id="outputText" readonly></textarea>
+
+    <script>
+        // Encrypt function using Base64 encoding
+        function encrypt() {
+            const input = document.getElementById("inputText").value;
+            const encrypted = btoa(input); // Base64 encoding
+            document.getElementById("outputText").value = encrypted;
+        }
+
+        // Decrypt function using Base64 decoding
+        function decrypt() {
+            const input = document.getElementById("inputText").value;
+            try {
+                const decrypted = atob(input); // Base64 decoding
+                document.getElementById("outputText").value = decrypted;
+            } catch (e) {
+                document.getElementById("outputText").value = "Invalid input! Please enter valid Base64 encoded text.";
+            }
+        }
+    </script>
+
+</body>
+</html>
