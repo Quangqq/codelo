@@ -67,10 +67,10 @@ function spamSmsAndCall(phone, times, listItem) {
 
 function updateStatusBar() {
     const statusList = document.getElementById('status-list');
-    statusList.innerHTML = ''; // Clear luồng
+    statusList.innerHTML = ''; // Clear the list
     queue.forEach((item, index) => {
         const listItem = document.createElement('li');
-        listItLuồng: ${item.phone} (${item.times} times)`;
+        listItem.innerText = `Luồng: ${item.phone} (${item.times} times)`;
         statusList.appendChild(listItem);
     });
 }
