@@ -4,6 +4,9 @@ async function fetchProxies() {
         const data = await response.text();
         const proxyArray = data.trim().split('\n');
         const tableBody = document.querySelector('#proxyTable tbody');
+        
+        // Xóa các hàng cũ trước khi chèn dữ liệu mới
+        tableBody.innerHTML = '';
 
         proxyArray.forEach(proxy => {
             const row = document.createElement('tr');
@@ -17,4 +20,8 @@ async function fetchProxies() {
     }
 }
 
+// Lần đầu gọi fetchProxies để tải dữ liệu ngay khi trang được tải
 fetchProxies();
+
+// Cập nhật dữ liệu proxy mỗi 10 giây
+setInterval(fetchProxies, 10000);
