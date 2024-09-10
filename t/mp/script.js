@@ -5,9 +5,10 @@ document.getElementById('fetchVideoBtn').addEventListener('click', function() {
             const videoContainer = document.getElementById('video-container');
             videoContainer.innerHTML = `
                 <video controls>
-                    <source src="${data.video_url}" type="video/mp4">
+                    <source src="${data.url}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                <div id="video-info">View Count: ${data.count}</div>
             `;
         })
         .catch(error => console.error('Error fetching the video:', error));
