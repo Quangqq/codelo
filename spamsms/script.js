@@ -49,7 +49,6 @@ function spamSmsAndCall(phone, times, listItem) {
         `${urls[2]}phone=${phone}&amout=${times}`,
         `${urls[3]}phone=${phone}&amout=${times}`,
         `${urls[4]}phone=${phone}&amout=${times}`
-        `${urls[5]}phone=${phone}&amout=${times}`
     ];
 
     Promise.all(urlsToFetch.map(url => fetch(url).then(response => response.json())))
