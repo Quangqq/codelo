@@ -15,6 +15,10 @@ async function fetchProxies() {
             row.appendChild(cell);
             tableBody.appendChild(row);
         });
+
+        // Cập nhật thời gian cập nhật
+        const updateTime = new Date().toLocaleTimeString();
+        document.getElementById('updateTime').textContent = `Cập nhật lúc ${updateTime}`;
     } catch (error) {
         console.error('Lỗi khi lấy dữ liệu proxy:', error);
     }
