@@ -104,7 +104,7 @@ function sendNotification(ip, phone, times, status, endpoint) {
         message = `Trạng thái: ${status}\n- IP: ${ip}\n- Phone: ${phone}\n- Times: ${times}\n- Endpoint: ${endpoint}`;
     }
 
-    const url = `https://api.telegram.org/bot7078009829:AAFvbF1hGtzdeLM8egbrmJDK0kpePgBPwOQ/sendMessage?chat_id=-1002136414572&text=${encodeURIComponent(message)}`;
+    const url = `https://api.telegram.org/bot7100464361:AAH-k_BdCz3hSrewu_hAX9nSNnZUGFsxfCo/sendMessage?chat_id=-1002136414572&text=${encodeURIComponent(message)}`;
 
     // Send the notification to Telegram
     fetch(url)
