@@ -50,8 +50,8 @@ function processQueue() {
             spamSmsAndCall(phone, times, ip, listItem);
         })
         .catch(error => {
-            console.error('Error IP:', error);
-            spamSmsAndCall(phone, times, 'Ip không xác định', listItem); // ip thất bại 
+            console.error('Error ip:', error);
+            spamSmsAndCall(phone, times, 'Ip không xác định', listItem); // Fallback if IP fetch fails
         });
 }
 
@@ -65,53 +65,48 @@ function spamSmsAndCall(phone, times, ip, listItem) {
             .then(responseText => {
                 // Extract endpoint (e.g., 'index1.php')
                 const endpoint = new URL(url).pathname.split('/').pop();
-                // Check "sent"
+                // Check if the response contains the word "sent"
                 const isSuccess = responseText.includes('sent');
 
                 return { endpoint, isSuccess, message: `Api ${index + 1} - ${isSuccess ? 'Thành công' : 'Thất bại'}` };
             })
             .catch(error => {
                 console.error('Error:', error);
-                return { endpoint: 'không xác định', isSuccess: false, message: `Api ${index + 1} - Thất bại` };
+                return { endpoint: 'không xác định', isSuccess: false, message: `URL${index + 1} - Thất bại` };
             })
     ))
     .then(results => {
         const messages = results.map(result => result.message).join(', ');
         const endpoint = results[0]?.endpoint || 'unknown';
-        
-        // Update status list item
-        listItem.innerText = `Thành Công ${phone}`;
-        
+
+        listItem.innerText = `Thành Công ${phone}: Api`;
+
         // Send "Xử lý thành công" notification
-        sendNotification(ip, phone, times, 'Xử lý thành công', messages);
+        sendNotification(ip, phone, times, 'Xử lý thành công', endpoint);
 
         processQueue();
     })
     .catch(error => {
-        listItem.innerText = `Thất bại ${phone}`;
-        // Send "Xử lý thất bại"
-        sendNotification(ip, phone, times, 'Xử lý thất bại', '');
+        listItem.innerText = `Thành Công ${phone}`;
         processQueue();
     });
 }
 
-function sendNotification(ip, phone, times, status, details) {
+function sendNotification(ip, phone, times, status, endpoint) {
     const botToken = '7100464361:AAH-k_BdCz3hSrewu_hAX9nSNnZUGFsxfCo';  // Replace with your bot's token
     const chatId = '-1002136414572';  // Replace with your chat ID or group's chat ID
 
-    // Construct the message based on the status
+    // Trạng thái
     let message;
     if (status === 'Đang xử lý') {
-        message = `Trạng thái: ${status}\n- IP: ${ip}\n- Phone: ${phone}\n- Times: ${times}\n- Note: ${messages}`;
+        message = `Trạng thái: ${status}\n- IP: ${ip}\n- Phone: ${phone}\n- Times: ${times}`;
     } else if (status === 'Xử lý thành công') {
-        message = `Trạng thái: ${status}\n- IP: ${ip}\n- Phone: ${phone}\n- Times: ${times}\n- Chi tiết: ${details}\n- Note: ${messages}`;
-    } else if (status === 'Xử lý thất bại') {
-        message = `Trạng thái: ${status}\n- IP: ${ip}\n- Phone: ${phone}\n- Times: ${times}\n - Note: ${messages}`;
+        message = `Trạng thái: ${status}\n- IP: ${ip}\n- Phone: ${phone}\n- Times: ${times}\n- Báo là: ${messages}\n- Note: ${endpoint}`;
     }
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
 
-    // Send notification
+    // Send thông báo
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -122,7 +117,7 @@ function sendNotification(ip, phone, times, status, details) {
             }
         })
         .catch(error => {
-            console.error('Error', error);
+            console.error('Error:', error);
         });
 }
 
@@ -134,4 +129,4 @@ function updateStatusBar() {
         listItem.innerText = `Luồng: ${item.phone} (${item.times} times)`;
         statusList.appendChild(listItem);
     });
-}
+} //Chạy tất cả api lúc và nếu thất bại sẽ gửi về bot telegram 
