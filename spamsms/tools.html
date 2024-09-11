@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPAM TOOL (BY QUANG)</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>SPAM TOOL <span>(BY QUANG)</span></h2>
+        <div class="input-group">
+            <input type="text" id="phone" placeholder="Nhập Số Cần Spam" />
+            <input type="text" id="times" placeholder="Nhập Thời Gian" />
+        </div>
+        <button onclick="addToQueue()" id="spamBtn">BẮT ĐẦU</button>
+        <p id="response"></p>
+        <div id="status-bar">
+            <h3>Status:</h3>
+            <ul id="status-list"></ul>
+        </div>
+        <div class="note">
+            <h4>Lưu ý:</h4>
+            <ul>
+                <li>- Nếu bạn dùng nó không hoạt động chắc có thể sập api xin vui lòng chờ 5 10p để nó hoạt động lại</li>
+                <li>- Nếu nó không hoạt động hãy tải lại trang website</li>
+                <li>- Nếu lỗi báo cho admin</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
