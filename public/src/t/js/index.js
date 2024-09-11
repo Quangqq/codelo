@@ -88,6 +88,10 @@ function ShowToast() {
     $('#Cron').click(function() {
         OpenUrl('https://cron.quangapi.com/');
     });
+	  
+    $('#DV').click(function() {
+        OpenUrl('https://dichvudichvu.quangapi.com/');
+    });
   });
 function Alerts() {
   Swal.fire({
