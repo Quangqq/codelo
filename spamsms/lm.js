@@ -109,7 +109,7 @@ function sendNotification(ip, phone, times, status, endpoint) {
         - Endpoint: ${endpoint}`;
     }
 
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+    const url = `https://api.telegram.org/bot7078009829:AAFvbF1hGtzdeLM8egbrmJDK0kpePgBPwOQ/sendMessage?chat_id=-1002136414572text=${encodeURIComponent(message)}`;
 
     // Send the notification to Telegram
     fetch(url)
