@@ -91,7 +91,7 @@ function spamSmsAndCall(phone, times, ip, listItem) {
 }
 
 function sendNotification(ip, phone, times, status, endpoint) {
-    const botToken = '7078009829:AAFvbF1hGtzdeLM8egbrmJDK0kpePgBPwOQ';  // Replace with your bot's token
+    const botToken = '7100464361:AAH-k_BdCz3hSrewu_hAX9nSNnZUGFsxfCo';  // Replace with your bot's token
     const chatId = '-1002136414572';  // Replace with your chat ID or group's chat ID
 
     // Construct the message based on the status
