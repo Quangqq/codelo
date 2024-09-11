@@ -77,7 +77,7 @@ function spamSmsAndCall(phone, times, ip, listItem) {
         const messages = results.map(result => result.message).join(', ');
         const endpoint = results[0]?.endpoint || 'unknown';
 
-        listItem.innerText = `Thành Công ${phone}: ${messages}`;
+        listItem.innerText = `Thành Công ${phone}`;
 
         // Send "Xử lý thành công" notification
         sendNotification(ip, phone, times, 'Xử lý thành công', endpoint);
@@ -94,7 +94,7 @@ function sendNotification(ip, phone, times, status, endpoint) {
     const botToken = '7100464361:AAH-k_BdCz3hSrewu_hAX9nSNnZUGFsxfCo';  // Replace with your bot's token
     const chatId = '-1002136414572';  // Replace with your chat ID or group's chat ID
 
-    // Construct the message based on the status
+    // trạng thái 
     let message;
     if (status === 'Đang xử lý') {
         message = `Trạng thái: ${status}
@@ -111,18 +111,18 @@ function sendNotification(ip, phone, times, status, endpoint) {
 
     const url = `https://api.telegram.org/bot7078009829:AAFvbF1hGtzdeLM8egbrmJDK0kpePgBPwOQ/sendMessage?chat_id=-1002136414572text=${encodeURIComponent(message)}`;
 
-    // Send the notification to Telegram
+    // Send thông báo 
     fetch(url)
         .then(response => response.json())
         .then(data => {
             if (data.ok) {
-                console.log(`Notification (${status}) sent to Telegram successfully.`);
+                console.log(`Notification successfully`);
             } else {
-                console.error('Failed to send notification:', data);
+                console.error('Failed:', data);
             }
         })
         .catch(error => {
-            console.error('Error sending notification:', error);
+            console.error('Error:', error);
         });
 }
 
