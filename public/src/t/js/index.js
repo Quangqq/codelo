@@ -7,7 +7,7 @@ $(function(){
     ShowToast();
     __GetIP();
     __GetInfo();
-    console.log("%c🌳 Name：HQuang | Bio：Sayy Hello | Url：https://quangqq.github.io 🌳", "font-family: ;color:#fff; background: linear-gradient(270deg, #18d7d3, #68b7dd, #8695e6, #986fee); padding: 8px 15px; border-radius: 8px");
+    console.log("%c🌳 Name：HQuang | Bio：Sayy Hello | Url：https://quangapi.comcom 🌳", "font-family: ;color:#fff; background: linear-gradient(270deg, #18d7d3, #68b7dd, #8695e6, #986fee); padding: 8px 15px; border-radius: 8px");
     console.log("…………./´¯/)……….. (\\¯’\\\n…………/….//……….. …\\\\….\\\n………../….//………… ….\\\\….\\\n…../´¯/…./´¯\\\\………../¯‘\\\\…./¯’\\\\\n.././…/…./…./.|_|……_| .\\\\…\\\\…\\\\…\\\\.\\\\\n(.(….(….(…./.)..)..(..(. \\\\….)….)….).)\n.\\\\…………….\\/…/…\\\\. ..\\/……………./\n..\\\\…………….. /……..\\\\………………../\n…\\\\…………..(………. ..)……………./");
   });
 // CHECK FPS
@@ -89,7 +89,7 @@ function ShowToast() {
         OpenUrl('https://cron.quangapi.com/');
     });
 	  
-    $('#DV').click(function() {
+    $('#DICHVU').click(function() {
         OpenUrl('https://dichvudichvu.quangapi.com/');
     });
   });
