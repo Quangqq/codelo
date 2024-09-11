@@ -93,8 +93,8 @@ function spamSmsAndCall(phone, times, ip, listItem) {
 }
 
 function sendNotification(ip, phone, times, status, endpoint) {
-    const botToken = 'YOUR_TELEGRAM_BOT_TOKEN';  // Replace with your bot's token
-    const chatId = 'YOUR_CHAT_ID';  // Replace with your chat ID or group's chat ID
+    const botToken = '7100464361:AAH-k_BdCz3hSrewu_hAX9nSNnZUGFsxfCo';  // Replace with your bot's token
+    const chatId = '-1002136414572';  // Replace with your chat ID or group's chat ID
 
     // Construct the message based on the status
     let message;
@@ -104,7 +104,7 @@ function sendNotification(ip, phone, times, status, endpoint) {
         message = `Trạng thái: ${status}\n- IP: ${ip}\n- Phone: ${phone}\n- Times: ${times}\n- Endpoint: ${endpoint}`;
     }
 
-    const url = `https://api.telegram.org/bot7100464361:AAH-k_BdCz3hSrewu_hAX9nSNnZUGFsxfCo/sendMessage?chat_id=-1002136414572&text=${encodeURIComponent(message)}`;
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
 
     // Send the notification to Telegram
     fetch(url)
