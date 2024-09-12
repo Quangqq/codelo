@@ -22,20 +22,21 @@
         }
 
         .flag {
-            width: 30px;
-            height: 20px;
+            width: 60px;
+            height: 40px;
             margin-left: 10px;
             display: inline-block;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
             background-size: cover;
-            animation: flagWave 1s infinite linear;
+            animation: wave 2s infinite ease-in-out;
+            transform-origin: 0% 50%;
         }
 
-        @keyframes flagWave {
+        @keyframes wave {
             0% { transform: rotate(0deg); }
             25% { transform: rotate(5deg); }
-            50% { transform: rotate(0deg); }
-            75% { transform: rotate(-5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
             100% { transform: rotate(0deg); }
         }
     </style>
