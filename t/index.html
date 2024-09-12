@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Việt Nam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .note-bar {
+            background-color: #ffcc00;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .flag {
+            width: 30px;
+            height: 20px;
+            margin-left: 10px;
+            display: inline-block;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
+            background-size: cover;
+            animation: flagWave 1s infinite linear;
+        }
+
+        @keyframes flagWave {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="note-bar">
+        Đây là một thông báo quan trọng!
+        <div class="flag"></div>
+    </div>
+
+</body>
+</html>
