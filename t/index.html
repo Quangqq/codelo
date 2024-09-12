@@ -21,42 +21,47 @@
             z-index: 1000;
         }
 
+        .flag-container {
+            display: inline-block;
+            perspective: 1000px;
+            margin-left: 10px;
+        }
+
         .flag {
             width: 60px;
             height: 40px;
-            margin-left: 10px;
-            display: inline-block;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
             background-size: cover;
-            background-position: center;
-            animation: flagWave 3s infinite ease-in-out;
+            animation: wave 2s infinite ease-in-out;
+            transform-origin: left center;
         }
 
-        @keyframes flagWave {
+        @keyframes wave {
             0% {
-                transform: perspective(500px) rotateY(0deg);
+                transform: rotateY(0deg);
             }
             25% {
-                transform: perspective(500px) rotateY(10deg);
+                transform: rotateY(15deg);
             }
             50% {
-                transform: perspective(500px) rotateY(0deg);
+                transform: rotateY(0deg);
             }
             75% {
-                transform: perspective(500px) rotateY(-10deg);
+                transform: rotateY(-15deg);
             }
             100% {
-                transform: perspective(500px) rotateY(0deg);
+                transform: rotateY(0deg);
             }
         }
-
     </style>
 </head>
 <body>
 
     <div class="note-bar">
         Đây là một thông báo quan trọng!
-        <div class="flag"></div>
+        <div class="flag-container">
+            <div class="flag"></div>
+        </div>
     </div>
 
 </body>
