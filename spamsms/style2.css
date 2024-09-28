@@ -1,38 +1,45 @@
 body { 
-    background-color: #f0f2f5;
+    background-color: #e9ecef; /* Light gray background for a softer look */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .container { 
-    margin-top: 50px; 
-    max-width: 600px;
+    max-width: 600px; /* Centered container */
 }
+
 h1 {
     font-weight: bold;
-    color: #007bff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
 }
+
 button {
-    background-color: #007bff;
+    background-color: #007bff; /* Primary button color */
     border: none;
-    padding: 10px 20px;
-    font-size: 1.1rem;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 30px; /* Rounded button */
 }
+
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
 }
+
 input[type="text"], input[type="number"], .form-select {
-    border-radius: 30px;
+    border-radius: 20px; /* Rounded corners */
     padding: 15px;
     font-size: 1rem;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ced4da; /* Light border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
+
 input[type="text"]:focus, input[type="number"]:focus, .form-select:focus {
     outline: none;
-    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Blue glow on focus */
 }
+
 #responseMessage {
     margin-top: 20px;
     font-weight: bold;
     color: green; /* Change color for success messages */
+    text-align: center; /* Center the response message */
 }
