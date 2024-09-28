@@ -9,68 +9,93 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>Thái Công</h1>
+        <div class="container">
+            <div class="logo">
+                <h1>Thái Công</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="#about">Giới Thiệu</a></li>
+                    <li><a href="#services">Dịch Vụ</a></li>
+                    <li><a href="#projects">Dự Án</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Trang Chủ</a></li>
-                <li><a href="#about">Giới Thiệu</a></li>
-                <li><a href="#services">Dịch Vụ</a></li>
-                <li><a href="#projects">Dự Án</a></li>
-                <li><a href="#contact">Liên Hệ</a></li>
-            </ul>
-        </nav>
     </header>
 
     <section id="home" class="hero">
-        <h2>Thiết Kế Nội Thất Đẳng Cấp</h2>
-        <p>Chúng tôi mang đến không gian sống lý tưởng cho bạn.</p>
+        <div class="hero-content">
+            <h2>Thiết Kế Nội Thất Đẳng Cấp</h2>
+            <p>Chúng tôi mang đến không gian sống lý tưởng cho bạn.</p>
+            <a href="#projects" class="btn">Khám Phá Dự Án</a>
+        </div>
     </section>
 
     <section id="about">
-        <h2>Giới Thiệu</h2>
-        <p>Thái Công là công ty thiết kế nội thất hàng đầu với nhiều năm kinh nghiệm.</p>
+        <div class="container">
+            <h2>Giới Thiệu</h2>
+            <p>Thái Công là công ty thiết kế nội thất hàng đầu với nhiều năm kinh nghiệm.</p>
+        </div>
     </section>
 
     <section id="services">
-        <h2>Dịch Vụ</h2>
-        <ul>
-            <li>Thiết kế nội thất nhà ở</li>
-            <li>Thiết kế văn phòng</li>
-            <li>Tư vấn phong thủy</li>
-        </ul>
+        <div class="container">
+            <h2>Dịch Vụ</h2>
+            <ul>
+                <li>Thiết kế nội thất nhà ở</li>
+                <li>Thiết kế văn phòng</li>
+                <li>Tư vấn phong thủy</li>
+            </ul>
+        </div>
     </section>
 
     <section id="projects">
-        <h2>Dự Án Đã Thực Hiện</h2>
-        <div class="gallery">
-            <img src="project1.jpg" alt="Dự án 1">
-            <img src="project2.jpg" alt="Dự án 2">
-            <img src="project3.jpg" alt="Dự án 3">
+        <div class="container">
+            <h2>Dự Án Đã Thực Hiện</h2>
+            <div class="gallery">
+                <img src="project1.jpg" alt="Dự án 1">
+                <img src="project2.jpg" alt="Dự án 2">
+                <img src="project3.jpg" alt="Dự án 3">
+            </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        <div class="container">
+            <h2>Blog</h2>
+            <p>Cập nhật các xu hướng và mẹo thiết kế nội thất mới nhất.</p>
         </div>
     </section>
 
     <section id="contact">
-        <h2>Liên Hệ</h2>
-        <form>
-            <label for="name">Họ tên:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Tin nhắn:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Gửi</button>
-        </form>
+        <div class="container">
+            <h2>Liên Hệ</h2>
+            <form>
+                <label for="name">Họ tên:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Tin nhắn:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Gửi</button>
+            </form>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Thái Công. Tất cả quyền lợi được bảo lưu.</p>
-        <div class="social-media">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-pinterest"></i></a>
+        <div class="container">
+            <p>&copy; 2024 Thái Công. Tất cả quyền lợi được bảo lưu.</p>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
