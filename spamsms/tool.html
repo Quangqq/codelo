@@ -1,1 +1,41 @@
-<h1>Đóng bảo trì update</h1>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTM | SPAM SMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+<div class="container">
+    <div id="content">
+        <h1 class="text-center">SPAM SMS</h1>
+        <p>Không làm phiền người khác. Chức năng này chỉ giải trí, nó chỉ gửi được 2 hoặc 3 tin nhắn. Nếu bạn bị tố cáo, thì mọi trách nhiệm đó sẽ thuộc về bạn.</p>
+        <form id="smsForm" class="text-center">
+            <div class="mb-3">
+                <label for="phone" class="form-label">Số điện thoại:</label>
+                <input type="text" id="phone" name="phone" class="form-control" placeholder="Nhập số điện thoại" required>
+            </div>
+            <div class="mb-3">
+                <label for="apiSelect" class="form-label">Chọn API để Spam:</label>
+                <select id="apiSelect" class="form-select" required>
+                    <option value="spamSms1">Spam SMS API 1</option>
+                    <option value="spamSms2">Spam SMS API 2</option>
+                    <option value="spamSms3">Spam SMS API 3</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">SPAM</button>
+        </form>
+        <div class="ktm" id="responseMessage"></div>
+    </div>
+    <footer>
+        <span style="color: white;"><img alt="" src="http://www.wieistmeineip.de/ip-address" /></span>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
