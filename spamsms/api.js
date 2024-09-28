@@ -10,6 +10,7 @@ document.getElementById('smsForm').addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent default form submission
 
     const phone = document.getElementById('phone').value;
+    const amount = document.getElementById('amount').value || 100; // Get the amount or default to 100
     const selectedApi = document.getElementById('apiSelect').value; // Get the selected API
 
     // Determine the API URL based on the selected option
@@ -21,14 +22,18 @@ document.getElementById('smsForm').addEventListener('submit', function (e) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ phone })
+        body: JSON.stringify({ phone, amount }) // Send the phone number and amount in the request body
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('responseMessage').innerText = data.message || "Message sent successfully!";
+        // Check if there is a success message from the API response
+        const message = data.message || "Message sent successfully!";
+        document.getElementById('responseMessage').innerText = message;
+        document.getElementById('responseMessage').style.color = 'green'; // Success color
     })
     .catch(error => {
         console.error('Error:', error);
         document.getElementById('responseMessage').innerText = "An error occurred. Please try again.";
+        document.getElementById('responseMessage').style.color = 'red'; // Error color
     });
 });
