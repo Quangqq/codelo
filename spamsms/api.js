@@ -27,13 +27,13 @@ document.getElementById('smsForm').addEventListener('submit', function (e) {
     .then(response => response.json())
     .then(data => {
         // Check if there is a success message from the API response
-        const message = data.message || "Message sent successfully!";
+        const message = data.message || "Thành Công";
         document.getElementById('responseMessage').innerText = message;
         document.getElementById('responseMessage').style.color = 'green'; // Success color
     })
     .catch(error => {
         console.error('Error:', error);
-        document.getElementById('responseMessage').innerText = "An error occurred. Please try again.";
+        document.getElementById('responseMessage').innerText = "Lỗi Vui Lòng Dùng Lại Sau";
         document.getElementById('responseMessage').style.color = 'red'; // Error color
     });
 });
