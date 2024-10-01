@@ -90,7 +90,7 @@ function ShowToast() {
     });
 	  
     $('#DICHVU').click(function() {
-        OpenUrl('https://dichvudichvu.quangapi.com/');
+        OpenUrl('https://dichvuvn.shop/');
     });
   });
 function Alerts() {
