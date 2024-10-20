@@ -1,8 +1,8 @@
 // api mặt định của bạn
 const spamApiUrls = {
-    spamSms1: 'https://your-api-url.com/api/spam-sms1', //api v1
-    spamSms2: 'https://your-api-url.com/api/spam-sms2', //api v2
-    spamSms3: 'https://your-api-url.com/api/spam-sms3', //api v3
+    spamSms1: 'https://api.dichvuvn.shop/', //api v1
+    spamSms2: 'https://api.dichvuvn.shop/', //api v2
+    spamSms3: 'https://api.dichvuvn.shop/', //api v3
 };
 
 document.getElementById('smsForm').addEventListener('submit', function (e) {
