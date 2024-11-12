@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
         }
@@ -17,29 +17,32 @@
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         h1 {
             text-align: center;
+            color: #343a40;
         }
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            margin-bottom: 20px;
         }
         label {
             font-weight: bold;
+            color: #495057;
         }
-        input, select, textarea {
+        input {
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #ced4da;
             border-radius: 4px;
             font-size: 16px;
             width: 100%;
         }
         button {
-            padding: 10px;
-            background-color: #28a745;
+            padding: 12px;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 4px;
@@ -47,17 +50,27 @@
             font-size: 16px;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #0056b3;
         }
-        .job-list {
-            margin-top: 30px;
+        .job-list, .status-list {
+            margin-top: 20px;
         }
-        .job-item {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 10px;
+        .status-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .status-table th, .status-table td {
+            padding: 12px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+        .status-table th {
+            background-color: #f1f3f5;
+            color: #495057;
+            font-weight: bold;
+        }
+        .status-table tr:nth-child(even) {
+            background-color: #f8f9fa;
         }
     </style>
 </head>
@@ -65,73 +78,81 @@
     <div class="container">
         <h1>Cron Job Manager</h1>
         <form id="cronJobForm">
-            <label for="jobName">Job Name</label>
-            <input type="text" id="jobName" name="jobName" placeholder="Enter job name" required>
-
-            <label for="jobSchedule">Schedule (Cron Format)</label>
-            <input type="text" id="jobSchedule" name="jobSchedule" placeholder="e.g., * * * * *" required>
-
-            <label for="apiEndpoint">API Endpoint</label>
+            <label for="apiEndpoint">API Link</label>
             <input type="url" id="apiEndpoint" name="apiEndpoint" placeholder="https://example.com/api" required>
 
-            <label for="apiMethod">HTTP Method</label>
-            <select id="apiMethod" name="apiMethod">
-                <option value="GET">GET</option>
-                <option value="POST">POST</option>
-                <option value="PUT">PUT</option>
-                <option value="DELETE">DELETE</option>
-            </select>
-
-            <label for="apiData">API Data (for POST/PUT)</label>
-            <textarea id="apiData" name="apiData" rows="4" placeholder='{"key":"value"}'></textarea>
+            <label for="intervalSeconds">Interval (Seconds)</label>
+            <input type="number" id="intervalSeconds" name="intervalSeconds" placeholder="Enter interval in seconds" min="1" required>
 
             <button type="submit">Add Cron Job</button>
         </form>
 
-        <div class="job-list">
-            <h2>Existing Cron Jobs</h2>
-            <div id="jobItems">
-                <!-- Cron jobs will be displayed here -->
-            </div>
+        <div class="status-list">
+            <h2>Job Status</h2>
+            <table class="status-table" id="statusTable">
+                <thead>
+                    <tr>
+                        <th>API Link</th>
+                        <th>Status Code</th>
+                        <th>Last Run Time</th>
+                    </tr>
+                </thead>
+                <tbody id="statusItems">
+                    <!-- Status updates will be displayed here -->
+                </tbody>
+            </table>
         </div>
     </div>
 
     <script>
+        const statusTableBody = document.getElementById('statusItems');
+
         document.getElementById('cronJobForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const jobName = document.getElementById('jobName').value;
-            const jobSchedule = document.getElementById('jobSchedule').value;
             const apiEndpoint = document.getElementById('apiEndpoint').value;
-            const apiMethod = document.getElementById('apiMethod').value;
-            const apiData = document.getElementById('apiData').value;
+            const intervalSeconds = parseInt(document.getElementById('intervalSeconds').value);
+            const currentDate = new Date().toISOString().split('T')[0];
 
-            // Logic to send the data to the backend (Node.js server) using Fetch API or Axios
-
-            // For now, we'll just log it to the console
-            console.log({
-                jobName,
-                jobSchedule,
-                apiEndpoint,
-                apiMethod,
-                apiData
-            });
-
-            // Clear the form
-            document.getElementById('cronJobForm').reset();
+            // Start the cron job
+            startCronJob(apiEndpoint, intervalSeconds);
         });
 
-        // Logic to fetch and display existing cron jobs from the backend
-        // Example code to append jobs to the DOM:
-        function addJobToList(job) {
-            const jobItem = document.createElement('div');
-            jobItem.className = 'job-item';
-            jobItem.textContent = `${job.name} - ${job.schedule} - ${job.api}`;
-            document.getElementById('jobItems').appendChild(jobItem);
+        function startCronJob(apiEndpoint, intervalSeconds) {
+            setInterval(() => {
+                const lastRunTime = new Date().toLocaleString();
+                runApiRequest(apiEndpoint, lastRunTime);
+            }, intervalSeconds * 1000);
         }
 
-        // Example of how you might call this function with data:
-        // addJobToList({ name: 'Test Job', schedule: '* * * * *', api: 'https://example.com/api' });
+        function runApiRequest(apiEndpoint, lastRunTime) {
+            fetch(apiEndpoint)
+                .then(response => {
+                    updateStatus(apiEndpoint, response.status, lastRunTime);
+                })
+                .catch(error => {
+                    console.error('Error executing API request:', error);
+                    updateStatus(apiEndpoint, 'Error', lastRunTime);
+                });
+        }
+
+        function updateStatus(apiEndpoint, status, lastRunTime) {
+            const row = document.createElement('tr');
+
+            const apiCell = document.createElement('td');
+            apiCell.textContent = apiEndpoint;
+            row.appendChild(apiCell);
+
+            const statusCell = document.createElement('td');
+            statusCell.textContent = status;
+            row.appendChild(statusCell);
+
+            const timeCell = document.createElement('td');
+            timeCell.textContent = lastRunTime;
+            row.appendChild(timeCell);
+
+            statusTableBody.appendChild(row);
+        }
     </script>
 </body>
 </html>
