@@ -1,5 +1,4 @@
-const yourDate = new Date("2024-11-27T10:01:47"),
-music = ['ido', 'noinaycoanh', 'nguoiamphu'];
+const yourDate = new Date("2024-11-27T10:01:47");
 
 document.addEventListener('DOMContentLoaded', function(){
       var rootTime = document.querySelector("time");
@@ -16,7 +15,9 @@ document.addEventListener('DOMContentLoaded', function(){
             rootTime.textContent = `${(hrs>9)?hrs:"0"+hrs}:${(min>9)?min:"0"+min}:${(sec>9)?sec:"0"+sec}`;
       } olock();
       var timer = setInterval(function(){olock()}, 1000);
-      document.querySelector("audio").setAttribute("src", `music/${music[Math.floor(Math.random()*music.length)]}.mp3`);
+
+      // Thay đổi đoạn này để lấy nhạc từ liên kết trực tiếp
+      document.querySelector("audio").setAttribute("src", "https://files.catbox.moe/yxsjr6.mp3");
 
       document.getElementsByTagName("body")[0].insertAdjacentHTML(
             "beforeend",
