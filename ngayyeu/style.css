@@ -1,5 +1,7 @@
 html, body {
-      background-color: #f6f6f6;
+      background-image: url('https://imgur.com/7kQw4wn.gif');
+      background-size: cover;
+      background-position: center;
       margin: 0;
       padding: 0;
 }
