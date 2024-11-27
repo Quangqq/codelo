@@ -1,4 +1,9 @@
-const yourDate = new Date("2024-11-27T10:01:47");
+const yourDate = new Date("2024-11-27T10:01:47"),
+music = [
+      'https://files.catbox.moe/etn4nr.mp3',
+      'https://files.catbox.moe/yxsjr6.mp3',
+      'https://files.catbox.moe/s1w24q.mp3'
+];
 
 document.addEventListener('DOMContentLoaded', function(){
       var rootTime = document.querySelector("time");
@@ -16,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function(){
       } olock();
       var timer = setInterval(function(){olock()}, 1000);
 
-      // Thay đổi đoạn này để lấy nhạc từ liên kết trực tiếp
-      document.querySelector("audio").setAttribute("src", "https://files.catbox.moe/yxsjr6.mp3");
+      // Chọn ngẫu nhiên một bài nhạc từ danh sách
+      document.querySelector("audio").setAttribute("src", music[Math.floor(Math.random() * music.length)]);
 
       document.getElementsByTagName("body")[0].insertAdjacentHTML(
             "beforeend",
