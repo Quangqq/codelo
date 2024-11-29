@@ -15,12 +15,7 @@ const textConfig = {
 };
 
 $(document).ready(function () {
-  // Tự động phát nhạc
-  var autoAudio = new Audio("sound/tick.mp3"); // Đường dẫn tới file âm thanh
-  autoAudio.play().catch(function (error) {
-    console.log("Âm thanh bị chặn tự động phát:", error);
-  });
-
+  // process bar
   setTimeout(function () {
     firstQuestion();
     $(".spinner").fadeOut();
