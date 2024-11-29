@@ -15,7 +15,6 @@ const textConfig = {
 };
 
 $(document).ready(function () {
-  // process bar
   setTimeout(function () {
     firstQuestion();
     $(".spinner").fadeOut();
