@@ -1,7 +1,7 @@
 const yourDate = new Date("2024-11-27T10:01:47"),
 music = [
       'https://files.catbox.moe/etn4nr.mp3',
-      'https://files.catbox.moe/yxsjr6.mp3',
+      'https://files.catbox.moe/f5o7qw.mp3',
       'https://quangapi.com/thichban/sound/duck.mp3'
 ];
 
