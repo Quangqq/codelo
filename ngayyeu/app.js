@@ -2,7 +2,7 @@ const yourDate = new Date("2024-11-27T10:01:47"),
 music = [
       'https://files.catbox.moe/etn4nr.mp3',
       'https://files.catbox.moe/yxsjr6.mp3',
-      'https://files.catbox.moe/s1w24q.mp3'
+      'https://quangapi.com/thichban/sound/duck.mp3'
 ];
 
 document.addEventListener('DOMContentLoaded', function(){
