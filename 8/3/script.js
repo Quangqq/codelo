@@ -25,7 +25,7 @@ document.getElementById("sendLove").addEventListener("click", function () {
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-    heart.innerHTML = "❤️";
+    heart.innerHTML = "";
 
     // Vị trí ngẫu nhiên
     heart.style.left = Math.random() * 100 + "vw";
