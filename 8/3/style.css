@@ -1,0 +1,90 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Nền gradient siêu đẹp */
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #FFDEE9, #B5FFFC);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Hiệu ứng nền */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url("https://via.placeholder.com/1920x1080/FFE4E1/FF1493?text=8-3+Background");
+    background-size: cover;
+    opacity: 0.2;
+}
+
+/* Nội dung chính */
+.content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #FF69B4;
+}
+
+p {
+    font-size: 1.2em;
+    color: #555;
+    margin: 20px 0;
+}
+
+/* Hiển thị hoa */
+.flowers img {
+    width: 100px;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.flowers img:hover {
+    transform: scale(1.2);
+}
+
+/* Nút gửi yêu thương */
+button {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #FF1493;
+}
+
+/* Tin nhắn ẩn */
+.hidden {
+    display: none;
+}
+
+#love-message p {
+    margin-top: 15px;
+    font-size: 1.4em;
+    color: #FF1493;
+    font-weight: bold;
+}
