@@ -30,7 +30,7 @@
       display: block;
       margin-bottom: 8px;
     }
-    input, select, button {
+    input, button {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -57,16 +57,11 @@
 
   <div class="container">
     <h2>Cho Thuê Cronjob</h2>
-    <label for="month">Chọn tháng sử dụng:</label>
-    <select id="month">
-      <option value="1">1 Tháng</option>
-      <option value="3">3 Tháng</option>
-      <option value="6">6 Tháng</option>
-      <option value="12">12 Tháng</option>
-    </select>
+    <label for="link">Nhập Link API:</label>
+    <input type="text" id="link" placeholder="https://domain.com/api">
 
-    <label for="cronTime">Nhập thời gian (Giờ:Phút):</label>
-    <input type="time" id="cronTime" />
+    <label for="seconds">Nhập số giây:</label>
+    <input type="number" id="seconds" placeholder="Giới hạn thời gian (giây)">
 
     <button onclick="calculateOptimalTime()">Tính Toán</button>
 
@@ -75,21 +70,19 @@
 
   <script>
     function calculateOptimalTime() {
-      const month = document.getElementById("month").value;
-      const timeInput = document.getElementById("cronTime").value;
-      const [hours, minutes] = timeInput.split(":").map(Number);
+      const link = document.getElementById("link").value;
+      const seconds = document.getElementById("seconds").value;
+
+      if (!link || !seconds) {
+        document.getElementById("result").innerHTML = "Vui lòng nhập đầy đủ link và thời gian!";
+        return;
+      }
 
       const currentDate = new Date();
-      const selectedMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + parseInt(month), 1);
-
-      const optimalTime = new Date(selectedMonthDate.getFullYear(), selectedMonthDate.getMonth(), selectedMonthDate.getDate(), hours, minutes);
+      const optimalTime = new Date(currentDate.getTime() + (seconds * 1000)); // Tính thời gian sau số giây nhập vào
       const timeDiff = optimalTime - currentDate;
 
-      if (timeDiff > 0) {
-        document.getElementById("result").innerHTML = `Thời gian tối ưu để chạy cronjob là: ${optimalTime.toLocaleString()} <br> Thời gian còn lại: ${timeDiff / 1000} giây`;
-      } else {
-        document.getElementById("result").innerHTML = "Thời gian đã qua. Vui lòng chọn thời gian trong tương lai!";
-      }
+      document.getElementById("result").innerHTML = `Link API: ${link} <br> Thời gian tối ưu để chạy cronjob là: ${optimalTime.toLocaleString()} <br> Thời gian còn lại: ${timeDiff / 1000} giây`;
     }
   </script>
 
