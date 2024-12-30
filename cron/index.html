@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cho Thuê Cronjob</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Cho Thuê Cronjob</h2>
+    <label for="month">Chọn tháng sử dụng:</label>
+    <select id="month">
+      <option value="1">1 Tháng</option>
+      <option value="3">3 Tháng</option>
+      <option value="6">6 Tháng</option>
+      <option value="12">12 Tháng</option>
+    </select>
+
+    <label for="cronTime">Nhập thời gian (Giờ:Phút):</label>
+    <input type="time" id="cronTime" />
+
+    <button onclick="calculateOptimalTime()">Tính Toán</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateOptimalTime() {
+      const month = document.getElementById("month").value;
+      const timeInput = document.getElementById("cronTime").value;
+      const [hours, minutes] = timeInput.split(":").map(Number);
+
+      const currentDate = new Date();
+      const selectedMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + parseInt(month), 1);
+
+      const optimalTime = new Date(selectedMonthDate.getFullYear(), selectedMonthDate.getMonth(), selectedMonthDate.getDate(), hours, minutes);
+      const timeDiff = optimalTime - currentDate;
+
+      if (timeDiff > 0) {
+        document.getElementById("result").innerHTML = `Thời gian tối ưu để chạy cronjob là: ${optimalTime.toLocaleString()} <br> Thời gian còn lại: ${timeDiff / 1000} giây`;
+      } else {
+        document.getElementById("result").innerHTML = "Thời gian đã qua. Vui lòng chọn thời gian trong tương lai!";
+      }
+    }
+  </script>
+
+</body>
+</html>
