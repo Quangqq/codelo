@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Nền gradient siêu đẹp */
+/* Nền gradient */
 body {
     font-family: Arial, sans-serif;
     height: 100vh;
@@ -26,22 +26,25 @@ body {
     z-index: -1;
     background-image: url("https://via.placeholder.com/1920x1080/FFE4E1/FF1493?text=8-3+Background");
     background-size: cover;
+    background-position: center;
     opacity: 0.2;
 }
 
 /* Nội dung chính */
 .content {
     text-align: center;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     max-width: 600px;
+    width: 90%;
 }
 
 h1 {
     font-size: 2.5em;
     color: #FF69B4;
+    margin-bottom: 20px;
 }
 
 p {
@@ -50,7 +53,7 @@ p {
     margin: 20px 0;
 }
 
-/* Hiển thị hoa */
+/* Hoa */
 .flowers img {
     width: 100px;
     margin: 10px;
@@ -77,7 +80,7 @@ button:hover {
     background-color: #FF1493;
 }
 
-/* Tin nhắn ẩn */
+/* Tin nhắn */
 .hidden {
     display: none;
 }
@@ -87,5 +90,5 @@ button:hover {
     font-size: 1.4em;
     color: #FF1493;
     font-weight: bold;
-    white-space: pre-wrap; /* Giữ định dạng xuống dòng nếu có */
+    white-space: pre-wrap;
 }
