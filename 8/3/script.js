@@ -1,7 +1,7 @@
 // Ngăn chặn chuột phải
 document.addEventListener("contextmenu", (event) => event.preventDefault());
 
-// Ngăn chặn tổ hợp phím
+// Ngăn tổ hợp phím
 document.addEventListener("keydown", function(event) {
     if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "F12")) {
         event.preventDefault();
@@ -11,10 +11,10 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-// Hiển thị tin nhắn yêu thương với hiệu ứng gõ chữ
+// Hiệu ứng gõ chữ
 document.getElementById("sendLove").addEventListener("click", function () {
     const messageContainer = document.getElementById("love-message");
-    const messageText = "Nhân ngày Quốc tế Phụ nữ 8/3, xin gửi những lời chúc tốt đẹp nhất đến tất cả những người phụ nữ tuyệt vời trên thế giới. Chúc các bạn luôn mạnh khỏe, xinh đẹp, hạnh phúc và thành công trong mọi lĩnh vực của cuộc sống. Cảm ơn vì đã làm cho thế giới này trở nên ấm áp và tràn đầy yêu thương hơn!";
+    const messageText = "Chúc tất cả phụ nữ trên thế giới luôn xinh đẹp, mạnh khỏe và hạnh phúc!";
     let currentIndex = 0;
 
     messageContainer.classList.remove("hidden");
@@ -23,11 +23,11 @@ document.getElementById("sendLove").addEventListener("click", function () {
         if (currentIndex < messageText.length) {
             messageContainer.querySelector("p").textContent += messageText[currentIndex];
             currentIndex++;
-            setTimeout(typeWriter, 50); // Tốc độ gõ chữ (50ms mỗi ký tự)
+            setTimeout(typeWriter, 50);
         }
     }
 
-    typeWriter(); // Bắt đầu hiệu ứng gõ chữ
+    typeWriter();
 });
 
 // Hiệu ứng trái tim rơi
@@ -42,7 +42,6 @@ function createHeart() {
 
     document.body.appendChild(heart);
 
-    // Xóa trái tim sau khi rơi
     setTimeout(() => {
         heart.remove();
     }, 5000);
