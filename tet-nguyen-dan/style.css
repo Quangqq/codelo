@@ -1,3 +1,4 @@
+/* Đặt lại mặc định cho toàn bộ giao diện */
 * {
     margin: 0;
     padding: 0;
@@ -6,48 +7,45 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: url('https://raw.githubusercontent.com/Quangqq/codelo/refs/heads/main/tet-nguyen-dan/assets/hinh-nen-powerpoint-tet-14-3.png') no-repeat center center fixed;
+    background: url('./assets/hinh-nen-powerpoint-tet-14-3.png') no-repeat center center fixed;
     background-size: cover;
-    color: #fff;
     height: 100vh;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
+/* Container cho nội dung chính */
 .container {
     text-align: center;
     position: relative;
     z-index: 2;
 }
 
+/* Tiêu đề chính "Chúc Mừng Năm Mới" */
 .title {
     font-size: 4rem;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 5px;
-    margin-bottom: 10px;
-    color: #ffd700;
-    animation: glow 1.5s infinite alternate;
-    text-shadow: 0 0 10px #ffd700, 0 0 20px #ff4500;
-}
-
-.subtitle {
-    font-size: 1.5rem;
-    color: #f5f5f5;
+    color: #FFD700;
+    text-shadow: 0px 0px 10px #FFD700, 0px 0px 20px #FF4500, 0px 0px 30px #FF6347;
+    animation: glow 2s infinite alternate;
     margin-bottom: 20px;
 }
 
+/* Hiệu ứng phát sáng cho tiêu đề */
 @keyframes glow {
     from {
-        text-shadow: 0 0 10px #ffd700, 0 0 20px #ff4500, 0 0 30px #ff8c00;
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FF4500, 0 0 30px #FF6347;
     }
     to {
-        text-shadow: 0 0 20px #ffd700, 0 0 30px #ff8c00, 0 0 40px #ff4500;
+        text-shadow: 0 0 20px #FFD700, 0 0 30px #FF4500, 0 0 40px #FF6347;
     }
 }
 
+/* Canvas cho hiệu ứng pháo hoa */
 canvas {
     position: absolute;
     top: 0;
@@ -55,4 +53,13 @@ canvas {
     width: 100%;
     height: 100%;
     z-index: 1;
+}
+
+/* Nội dung phụ hoặc ghi chú */
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #FFF5EE;
+    text-shadow: 0px 0px 5px #FF4500;
+    margin-bottom: 30px;
 }
