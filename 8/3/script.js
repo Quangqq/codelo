@@ -14,7 +14,7 @@ document.addEventListener("keydown", function(event) {
 // Hiệu ứng gõ chữ
 document.getElementById("sendLove").addEventListener("click", function () {
     const messageContainer = document.getElementById("love-message");
-    const messageText = "Chúc tất cả phụ nữ trên thế giới luôn xinh đẹp, mạnh khỏe và hạnh phúc!";
+    const messageText = "Nhân ngày Quốc tế Phụ nữ 8/3, xin gửi những lời chúc tốt đẹp nhất đến tất cả những người phụ nữ tuyệt vời trên thế giới. Chúc các phụ nữ luôn mạnh khỏe, xinh đẹp, hạnh phúc và thành công trong mọi lĩnh vực của cuộc sống. Cảm ơn vì đã làm cho thế giới này trở nên ấm áp và tràn đầy yêu thương hơn!";
     let currentIndex = 0;
 
     messageContainer.classList.remove("hidden");
