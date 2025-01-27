@@ -3,24 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đào Proxy</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Tải Proxy</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Danh Sách Proxy</h1>
-        <p>Thời gian cập nhật gần nhất: <span id="updateTime">Đang tải...</span></p>
-        <table id="proxyTable">
-            <thead>
-                <tr>
-                    <th>Proxy</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dữ liệu proxy sẽ được chèn vào đây -->
-            </tbody>
-        </table>
-    </div>
-    <script src="script.js"></script>
+    <h1>Tự động tải Proxy</h1>
+    <p>Danh sách proxy sẽ được tải và hiển thị bên dưới:</p>
+    <textarea id="proxyList" cols="100" rows="20" readonly></textarea>
+    <script>
+        const proxyApis = [
+            "https://api.proxyscrape.com/?request=displayproxies&proxytype=http",
+            "https://www.proxy-list.download/api/v1/get?type=http",
+            "https://api.openproxylist.xyz/http.txt",
+            "http://alexa.lr2b.com/proxylist.txt",
+            "https://multiproxy.org/txt_all/proxy.txt"
+        ];
+
+        const fetchProxies = async () => {
+            let allProxies = '';
+            for (const api of proxyApis) {
+                try {
+                    const response = await fetch(api);
+                    if (response.ok) {
+                        const proxies = await response.text();
+                        allProxies += proxies + '\n';
+                    } else {
+                        console.error(`Lỗi tải từ API: ${api}`);
+                    }
+                } catch (error) {
+                    console.error(`Lỗi kết nối tới ${api}:`, error);
+                }
+            }
+            document.getElementById('proxyList').value = allProxies;
+            saveToFile(allProxies);
+        };
+
+        const saveToFile = (data) => {
+            const blob = new Blob([data], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'proxie.txt';
+            a.click();
+        };
+
+        // Tải proxy mỗi 10 phút
+        fetchProxies(); // Chạy ngay lần đầu
+        setInterval(fetchProxies, 10 * 60 * 1000); // Lặp lại mỗi 10 phút
+    </script>
 </body>
 </html>
