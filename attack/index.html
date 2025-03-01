@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Yêu Cầu API</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; margin: 20px; }
+        h2 { color: #333; }
+        form { background: white; padding: 20px; display: inline-block; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        input, button { margin: 5px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { background: #28a745; color: white; cursor: pointer; }
+        .history { margin-top: 20px; text-align: left; display: inline-block; width: 60%; }
+        .history-item { background: white; padding: 10px; margin-bottom: 10px; border-radius: 5px; position: relative; }
+        .countdown { color: red; font-weight: bold; position: absolute; top: 10px; right: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>Gửi Yêu Cầu API</h2>
+    <form id="apiForm">
+        <input type="text" id="url" placeholder="Nhập URL..." required>
+        <input type="number" id="time" placeholder="Thời gian (giây)" required>
+        <button type="submit">Gửi</button>
+    </form>
+
+    <div class="history">
+        <h3>Lịch Sử Gửi API</h3>
+        <div id="historyList"></div>
+    </div>
+
+    <script>
+        document.getElementById("apiForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const url = document.getElementById("url").value;
+            const time = parseInt(document.getElementById("time").value);
+            const apiKey = "quangdev";
+            const apiUrl = `http://160.187.246.180:4000/api?url=${encodeURIComponent(url)}&time=${time}&rate=100&thea=20&proxy=proxies.txt&api_key=${apiKey}`;
+
+            fetch(apiUrl)
+                .then(response => response.text())
+                .then(data => {
+                    addHistory(url, time, data);
+                })
+                .catch(error => console.error("Lỗi API:", error));
+        });
+
+        function addHistory(url, time, response) {
+            const historyList = document.getElementById("historyList");
+            const item = document.createElement("div");
+            const expireTime = Date.now() + time * 1000;
+
+            item.classList.add("history-item");
+            item.innerHTML = `
+                <p><strong>URL:</strong> ${url}</p>
+                <p><strong>Thời gian:</strong> ${time} giây</p>
+                <p><strong>Kết quả:</strong> ${response}</p>
+                <p class="countdown" data-expire="${expireTime}"></p>
+            `;
+
+            historyList.appendChild(item);
+            updateCountdowns();
+        }
+
+        function updateCountdowns() {
+            const now = Date.now();
+            document.querySelectorAll(".countdown").forEach(el => {
+                const expireAt = parseInt(el.getAttribute("data-expire"));
+                const remaining = Math.floor((expireAt - now) / 1000);
+                if (remaining <= 0) {
+                    el.parentElement.remove();
+                } else {
+                    el.textContent = "Xóa sau: " + remaining + " giây";
+                }
+            });
+        }
+
+        setInterval(updateCountdowns, 1000);
+    </script>
+
+</body>
+</html>
